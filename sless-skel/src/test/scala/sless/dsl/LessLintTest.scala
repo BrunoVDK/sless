@@ -15,7 +15,7 @@ class LessLintTest extends FunSuite{
       },
     )
 
-   val (lintedBool, lintedEx) = LessLintImplementation.removeEmptyRules(ex)
+   val (lintedBool, lintedEx) = removeEmptyRules(ex)
     assert(lintedBool === true)
     assert(
       LessLintImplementation.dsl.compile(lintedEx) ===
@@ -35,7 +35,7 @@ class LessLintTest extends FunSuite{
       )
     )
 
-    val (lintedBool, lintedEx) = LessLintImplementation.aggregateMargins(ex)
+    val (lintedBool, lintedEx) = aggregateMargins(ex)
     assert(lintedBool === true)
     assert(
       LessLintImplementation.dsl.compile(lintedEx) ===
@@ -52,10 +52,10 @@ class LessLintTest extends FunSuite{
     )
     val ex2 = css(container(fldecl))
 
-    val lintedBool1 = LessLintImplementation.limitFloats(ex1,1)
+    val lintedBool1 = limitFloats(ex1,1)
     assert(lintedBool1 === true)
 
-    val lintedBool2 = LessLintImplementation.limitFloats(ex2,1)
+    val lintedBool2 = limitFloats(ex2,1)
     assert(lintedBool2 === false)
   }
 }
