@@ -1,5 +1,5 @@
 package sless.ast.exp
 
-case class ValueExp(string: String) extends Expression {
+case class ValueExp[T](value: T) extends Expression {
 
 }

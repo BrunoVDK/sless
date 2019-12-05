@@ -1,6 +1,6 @@
 package sless.ast.exp
 
-trait Expression {
+abstract class Expression {
   def compile(): String = ""
   def pretty(spaces: Int): String = ""
 }

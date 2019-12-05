@@ -4,14 +4,13 @@
     <list default="true" id="d3c5fb62-3b36-45c4-9a19-655571ab4f81" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/Base.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/Base.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/CssExp.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/DeclarationExp.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/PropertyExp.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/RuleExp.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/SelectorExp.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/ValueExp.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/BaseExtended.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/DeclarationExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/DeclarationExp.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/Expression.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/Expression.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/RuleExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/RuleExp.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/SelectorExp.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/ValueExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/ValueExp.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/scala/sless/dsl/CssImplementation.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/sless/dsl/CssImplementation.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/sless/dsl/LessVariableImplementation.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/sless/dsl/LessVariableImplementation.scala" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +29,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Scala Trait" />
         <option value="Scala Class" />
+        <option value="Scala Trait" />
       </list>
     </option>
   </component>
