@@ -4,7 +4,7 @@ import sless.ast.Base
 
 object LessVariableImplementation {
   type DSL = PropertyDSL with SelectorDSL with ValueDSL with Compilable
-  val dsl: DSL = Base
+  val dsl: DSL = new Base()
 
   import LessVariableImplementation.dsl._
 

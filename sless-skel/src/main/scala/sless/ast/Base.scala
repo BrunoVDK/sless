@@ -13,31 +13,31 @@ class Base extends PropertyDSL with SelectorDSL with ValueDSL with Compilable {
   override type Property = PropertyExp
   override type Value = ValueExp[_]
 
-  override protected def fromRules(rules: Seq[RuleExp]): CssExp = CssExp(rules)
+  override protected def fromRules(rules: Seq[Rule]): Css = CssExp(rules)
 
-  override protected def className(s: SelectorExp, string: String): SelectorExp = ???
-  override protected def id(s: SelectorExp, string: String): SelectorExp = ???
-  override protected def attribute(s: SelectorExp, attr: String, value: ValueExp[_]): SelectorExp = ???
-  override protected def pseudoClass(s: SelectorExp, string: String): SelectorExp = ???
-  override protected def pseudoElement(s: SelectorExp, string: String): SelectorExp = ???
+  override protected def className(s: Selector, string: String): Selector = SelectorAll()
+  override protected def id(s: Selector, string: String): Selector = SelectorAll()
+  override protected def attribute(s: Selector, attr: String, value: ValueExp[_]): Selector = SelectorAll()
+  override protected def pseudoClass(s: Selector, string: String): Selector = SelectorAll()
+  override protected def pseudoElement(s: Selector, string: String): Selector = SelectorAll()
 
-  override protected def adjacent(s: SelectorExp, selector: SelectorExp): SelectorExp = ???
-  override protected def general(s: SelectorExp, selector: SelectorExp): SelectorExp = ???
-  override protected def child(s: SelectorExp, selector: SelectorExp): SelectorExp = ???
-  override protected def descendant(s: SelectorExp, selector: SelectorExp): SelectorExp = ???
+  override protected def adjacent(s: Selector, selector: Selector): Selector = SelectorAll()
+  override protected def general(s: Selector, selector: Selector): Selector = SelectorAll()
+  override protected def child(s: Selector, selector: Selector): Selector = SelectorAll()
+  override protected def descendant(s: Selector, selector: Selector): Selector = SelectorAll()
 
-  override protected def group(selectors: Seq[SelectorExp]): SelectorExp = ???
-  override def tipe(string: String): SelectorExp = ???
-  override val All: SelectorExp = _
+  override protected def group(selectors: Seq[Selector]): Selector = SelectorAll()
+  override def tipe(string: String): Selector = SelectorAll()
+  override val All: Selector = SelectorAll()
 
-  override protected def bindTo(s: SelectorExp, declarations: Seq[DeclarationExp]): RuleExp = RuleExp(s, declarations)
+  override protected def bindTo(s: Selector, declarations: Seq[Declaration]): Rule = RuleExp(s, declarations)
 
-  override def prop(string: String): PropertyExp = PropertyExp(string)
-  override protected def assign(p: PropertyExp, value: ValueExp[_]): DeclarationExp = DeclarationExp(p, value)
+  override def prop(string: String): Property = PropertyExp(string)
+  override protected def assign(p: Property, value: Value): Declaration = DeclarationExp(p, value)
 
-  override def value(string: String): ValueExp[_] = ValueExp[String](string)
+  override def value(string: String): Value = ValueExp[String](string)
 
-  override def compile(sheet: CssExp): String = sheet.compile()
-  override def pretty(sheet: CssExp, spaces: Int): String = sheet.pretty(spaces)
+  override def compile(sheet: Css): String = sheet.compile()
+  override def pretty(sheet: Css, spaces: Int): String = sheet.pretty(spaces)
 
 }
