@@ -4,6 +4,4 @@ import sless.ast.exp.Expression
 
 abstract class SelectorExp() extends Expression {
 
-
-
 }

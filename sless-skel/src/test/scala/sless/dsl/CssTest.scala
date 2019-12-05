@@ -1,7 +1,7 @@
 package sless.dsl
 
 import org.scalatest.FunSuite
-import sless.ast.exp.selector.{SelectorAll, SelectorPseudoClassExp}
+import sless.ast.exp.selector.SelectorAll
 
 class CssTest extends FunSuite {
   import CssImplementation.dsl._

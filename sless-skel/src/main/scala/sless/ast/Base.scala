@@ -26,8 +26,8 @@ class Base extends PropertyDSL with SelectorDSL with ValueDSL with Compilable {
   override protected def child(s: Selector, selector: Selector): Selector = SelectorAll()
   override protected def descendant(s: Selector, selector: Selector): Selector = SelectorAll()
 
-  override protected def group(selectors: Seq[Selector]): Selector = SelectorAll()
-  override def tipe(string: String): Selector = SelectorAll()
+  override protected def group(selectors: Seq[Selector]): Selector = SelectorListExp(selectors)
+  override def tipe(string: String): Selector = SelectorTypeExp(string)
   override val All: Selector = SelectorAll()
 
   override protected def bindTo(s: Selector, declarations: Seq[Declaration]): Rule = RuleExp(s, declarations)
