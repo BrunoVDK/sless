@@ -1,3 +1,7 @@
 package sless.ast.exp.selector.modifier
 
-case class SelectorClassExp() extends SelectorExp
+import sless.ast.exp.selector.SelectorExp
+
+case class SelectorClassExp(sel: SelectorExp, c: String) extends SelectorModifierExp(sel) {
+  override protected def suffix(): String = "." + c
+}

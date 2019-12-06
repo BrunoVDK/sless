@@ -1,5 +1,5 @@
 package sless.ast.exp
 
-case class PropertyExp(string: String) extends Expression {
-
+case class PropertyExp(p: String) extends Expression {
+  override def pretty(spaces: Int): String = p
 }

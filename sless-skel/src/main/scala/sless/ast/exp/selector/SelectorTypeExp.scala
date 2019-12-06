@@ -1,3 +1,5 @@
 package sless.ast.exp.selector
 
-case class SelectorTypeExp(string: String) extends SelectorExp
+case class SelectorTypeExp(s: String) extends SelectorExp {
+  override def pretty(spaces: Int): String = s
+}
