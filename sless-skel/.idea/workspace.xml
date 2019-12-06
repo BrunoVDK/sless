@@ -2,27 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3c5fb62-3b36-45c4-9a19-655571ab4f81" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/SelectorExp.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Buno.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Buno.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/Base.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/Base.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/CssExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/CssExp.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/DeclarationExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/DeclarationExp.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/Expression.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/Expression.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/PropertyExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/PropertyExp.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/RuleExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/RuleExp.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/ValueExp.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/SelectorAll.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/SelectorAll.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/SelectorListExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/SelectorListExp.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/SelectorTypeExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/SelectorTypeExp.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/combinator/SelectorAdjacentExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/combinator/SelectorAdjacentExp.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/combinator/SelectorChildExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/combinator/SelectorChildExp.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/combinator/SelectorDescendantExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/combinator/SelectorDescendantExp.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/combinator/SelectorGeneralExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/combinator/SelectorGeneralExp.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/modifier/SelectorAttributeExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/modifier/SelectorAttributeExp.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/modifier/SelectorClassExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/modifier/SelectorClassExp.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/modifier/SelectorIDExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/modifier/SelectorIDExp.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/modifier/SelectorPseudoClassExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/modifier/SelectorPseudoClassExp.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/modifier/SelectorPseudoElementExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/modifier/SelectorPseudoElementExp.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/sless/dsl/CssTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/sless/dsl/CssTest.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/SelectorAll.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/SelectorExp.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/SelectorListExp.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/SelectorTypeExp.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/combinator/SelectorAdjacentExp.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/combinator/SelectorChildExp.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/combinator/SelectorCombinatorExp.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/combinator/SelectorDescendantExp.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/combinator/SelectorGeneralExp.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/modifier/SelectorAttributeExp.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/modifier/SelectorClassExp.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/modifier/SelectorIDExp.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/modifier/SelectorModifierExp.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/modifier/SelectorPseudoClassExp.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/modifier/SelectorPseudoElementExp.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/value/ValueExp.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/sless/dsl/LessLintImplementation.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/sless/dsl/LessLintImplementation.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/sless/dsl/LessVariableImplementation.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/sless/dsl/LessVariableImplementation.scala" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -124,7 +129,48 @@
       <option name="showProgressMessages" value="true" />
       <option name="testArgs" value="" />
       <option name="testClassPath" value="sless.dsl.CssTest" />
-      <option name="testName" value="experimentation" />
+      <option name="useSbt" value="false" />
+      <option name="useUiWithSbt" value="false" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LessVariableTest.Red color test" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="sless" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="testKind" value="Class" />
+      <option name="envs">
+        <map />
+      </option>
+      <option name="javaOptions" value="" />
+      <option name="jrePath" />
+      <option name="searchTest" value="Across module dependencies" />
+      <option name="showProgressMessages" value="true" />
+      <option name="testArgs" value="" />
+      <option name="testClassPath" value="sless.dsl.LessVariableTest" />
+      <option name="testName" value="Red color test" />
+      <option name="useSbt" value="false" />
+      <option name="useUiWithSbt" value="false" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LessVariableTest.Test width" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="sless" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="testKind" value="Class" />
+      <option name="envs">
+        <map />
+      </option>
+      <option name="javaOptions" value="" />
+      <option name="jrePath" />
+      <option name="searchTest" value="Across module dependencies" />
+      <option name="showProgressMessages" value="true" />
+      <option name="testArgs" value="" />
+      <option name="testClassPath" value="sless.dsl.LessVariableTest" />
+      <option name="testName" value="Test width" />
       <option name="useSbt" value="false" />
       <option name="useUiWithSbt" value="false" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
@@ -136,7 +182,9 @@
       <list>
         <item itemvalue="ScalaTest.CssTest.Assignment CSS" />
         <item itemvalue="ScalaTest.CssTest.Simple CSS" />
-        <item itemvalue="ScalaTest.CssTest.experimentation" />
+        <item itemvalue="ScalaTest.LessVariableTest.Test width" />
+        <item itemvalue="ScalaTest.LessVariableTest.Red color test" />
+        <item itemvalue="ScalaTest.CssTest.Assignment CSS" />
       </list>
     </recent_temporary>
   </component>
