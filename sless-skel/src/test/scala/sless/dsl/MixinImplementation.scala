@@ -1,8 +1,10 @@
 package sless.dsl
 
+import sless.ast.Base
+
 object MixinImplementation {
   type DSL = PropertyDSL with SelectorDSL with ValueDSL with MixinDSL with Compilable
-  val dsl: DSL = ???
+  val dsl: DSL = Base
 
   /**
     * Create a non-parametric mixin that contains the declarations:

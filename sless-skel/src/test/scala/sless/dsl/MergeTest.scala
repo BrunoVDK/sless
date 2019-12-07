@@ -2,7 +2,7 @@ package sless.dsl
 
 import org.scalatest.FunSuite
 
-class MergeTest extends  FunSuite{
+class MergeTest extends FunSuite {
   import MergeImplementation.dsl._
 
   test("Vanilla merge") {
