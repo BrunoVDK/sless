@@ -1,14 +1,16 @@
 package sless.ast
 
-import sless.ast.exp.CssExp
 import sless.dsl.LintDSL
 
 class BaseLint extends Base with LintDSL {
 
-  override def removeEmptyRules(css: CssExp): (Boolean, CssExp) = (css.hasEmptyRule(), css.removeEmptyRules())
+  override def removeEmptyRules(css: Css): (Boolean, Css) = css.withoutEmptyRules
 
-  override def aggregateMargins(css: CssExp): (Boolean, CssExp) = ???
+  override def aggregateMargins(css: Css): (Boolean, Css) = css.aggregate(prop("margin-top"),
+    prop("margin-left"),
+    prop("margin-bottom"),
+    prop("margin-right"))
 
-  override def limitFloats(css: CssExp, n: Integer): Boolean = ???
+  override def limitFloats(css: Css, n: Integer): Boolean = css.occurrences(prop("float")) > n
 
 }
