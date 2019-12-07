@@ -12,7 +12,7 @@ case class RuleExp(selector: SelectorExp, declarations: Seq[DeclarationExp]) ext
   def aggregate(ps: Seq[PropertyExp]): (Boolean, RuleExp) = {
     val vs = ps.flatMap(p => declarations.find(_.property == p)).map(_.value)
     val margin = DeclarationExp(PropertyExp("margin"), vs.reduce((d1,d2) => d1.merge(d2)))
-    val res = declarations.span(d => ps.contains(d.property))
+    val res = declarations.span(d => !ps.contains(d.property))
     (vs.length == ps.length, RuleExp(selector, res._1 ++ (margin +: res._2.filterNot(d => ps.contains(d.property)))))
   }
 

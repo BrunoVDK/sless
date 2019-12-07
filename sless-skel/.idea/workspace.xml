@@ -5,10 +5,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/BaseLint.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/BaseLint.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/CssExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/CssExp.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/DeclarationExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/DeclarationExp.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/RuleExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/RuleExp.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/ValueExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/ValueExp.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/sless/dsl/CssImplementation.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/sless/dsl/CssImplementation.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/sless/dsl/LessVariableImplementation.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/sless/dsl/LessVariableImplementation.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/META-INF/sless.kotlin_module" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,6 +17,10 @@
   </component>
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
+  </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="autoscrollToSource" value="true" />
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="true" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -54,8 +57,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="ScalaTest.CssTest.Simple CSS">
-    <configuration name="CssTest.Assignment CSS" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+  <component name="RunManager" selected="ScalaTest.LessLintTest.Aggregate margins">
+    <configuration name="LessLintTest.Aggregate margins" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="sless" />
       <option name="allowRunningInParallel" value="false" />
       <option name="testKind" value="Class" />
@@ -67,8 +70,8 @@
       <option name="searchTest" value="Across module dependencies" />
       <option name="showProgressMessages" value="true" />
       <option name="testArgs" value="" />
-      <option name="testClassPath" value="sless.dsl.CssTest" />
-      <option name="testName" value="Assignment CSS" />
+      <option name="testClassPath" value="sless.dsl.LessLintTest" />
+      <option name="testName" value="Aggregate margins" />
       <option name="useSbt" value="false" />
       <option name="useUiWithSbt" value="false" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
@@ -76,7 +79,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CssTest.Simple CSS" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="LessLintTest.Limit Floats" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="sless" />
       <option name="allowRunningInParallel" value="false" />
       <option name="testKind" value="Class" />
@@ -88,8 +91,8 @@
       <option name="searchTest" value="Across module dependencies" />
       <option name="showProgressMessages" value="true" />
       <option name="testArgs" value="" />
-      <option name="testClassPath" value="sless.dsl.CssTest" />
-      <option name="testName" value="Simple CSS" />
+      <option name="testClassPath" value="sless.dsl.LessLintTest" />
+      <option name="testName" value="Limit Floats" />
       <option name="useSbt" value="false" />
       <option name="useUiWithSbt" value="false" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
@@ -97,7 +100,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CssTest.experimentation" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="LessLintTest.Remove empty rules" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="sless" />
       <option name="allowRunningInParallel" value="false" />
       <option name="testKind" value="Class" />
@@ -109,7 +112,8 @@
       <option name="searchTest" value="Across module dependencies" />
       <option name="showProgressMessages" value="true" />
       <option name="testArgs" value="" />
-      <option name="testClassPath" value="sless.dsl.CssTest" />
+      <option name="testClassPath" value="sless.dsl.LessLintTest" />
+      <option name="testName" value="Remove empty rules" />
       <option name="useSbt" value="false" />
       <option name="useUiWithSbt" value="false" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
@@ -161,11 +165,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="ScalaTest.CssTest.Simple CSS" />
-        <item itemvalue="ScalaTest.CssTest.Assignment CSS" />
+        <item itemvalue="ScalaTest.LessLintTest.Aggregate margins" />
+        <item itemvalue="ScalaTest.LessLintTest.Limit Floats" />
+        <item itemvalue="ScalaTest.LessLintTest.Remove empty rules" />
         <item itemvalue="ScalaTest.LessVariableTest.Test width" />
         <item itemvalue="ScalaTest.LessVariableTest.Red color test" />
-        <item itemvalue="ScalaTest.CssTest.Assignment CSS" />
       </list>
     </recent_temporary>
   </component>
