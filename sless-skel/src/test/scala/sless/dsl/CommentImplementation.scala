@@ -1,8 +1,8 @@
 package sless.dsl
 
-import sless.ast.Base
+import sless.ast.ExtendedBase
 
 object CommentImplementation {
   type DSL = PropertyDSL with SelectorDSL with ValueDSL with CommentDSL with Compilable
-  val dsl: DSL = Base
+  val dsl: DSL = ExtendedBase
 }

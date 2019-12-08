@@ -1,10 +1,10 @@
 package sless.dsl
 
-import sless.ast.Base
+import sless.ast.ExtendedBase
 
 object LessVariableImplementation {
   type DSL = PropertyDSL with SelectorDSL with ValueDSL with Compilable
-  val dsl: DSL = Base
+  val dsl: DSL = ExtendedBase
 
   import LessVariableImplementation.dsl._
 

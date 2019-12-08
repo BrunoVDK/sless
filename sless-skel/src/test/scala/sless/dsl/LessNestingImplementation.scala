@@ -1,8 +1,8 @@
 package sless.dsl
 
-import sless.ast.Base
+import sless.ast.ExtendedBase
 
 object LessNestingImplementation {
   type DSL = PropertyDSL with NestedSelectorDSL with ValueDSL with Compilable
-  val dsl: DSL = Base
+  val dsl: DSL = ExtendedBase
 }

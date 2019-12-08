@@ -3,6 +3,8 @@ package sless.ast
 import sless.dsl._
 import sless.ast.exp._
 
+object Base extends BaseLint
+
 class Base extends PropertyDSL with SelectorDSL with ValueDSL with Compilable {
 
   override type Rule = RuleExp
@@ -41,12 +43,6 @@ class Base extends PropertyDSL with SelectorDSL with ValueDSL with Compilable {
 
 }
 
-class BaseComment extends BaseLint with CommentDSL {
-  override protected def commentRule(rule: Rule, str: String): Rule = rule.copy(rule.selector, rule.elements, str)
-  override protected def commentDeclaration(declaration: Declaration, str: String): Declaration =
-    declaration.copy(declaration.property, declaration.value, str)
-}
-
 class BaseLint extends Base with LintDSL {
   override def removeEmptyRules(css: Css): (Boolean, Css) = css.withoutEmptyRules
   override def aggregateMargins(css: Css): (Boolean, Css) = css.aggregate(prop("margin-top"),
@@ -54,26 +50,4 @@ class BaseLint extends Base with LintDSL {
     prop("margin-bottom"),
     prop("margin-left"))
   override def limitFloats(css: Css, n: Integer): Boolean = css.occurrences(prop("float")) > n
-}
-
-class BaseValues extends BaseComment with BetterValuesDSL {
-
-}
-
-class BaseNesting extends BaseValues with NestedSelectorDSL {
-  override type RuleOrDeclaration = sless.ast.exp.RuleOrDeclaration
-  override val Parent: SelectorExp = SelectorParent
-  override protected def bindWithNesting(s: SelectorExp, rules: Seq[RuleOrDeclaration]): Rule = new RuleExp(s, rules)
-}
-
-class BaseMerge extends BaseNesting with MergeDSL {
-  override def mergeSheets(cssSheets: CssExp*): CssExp = cssSheets.reduce((x,y) => x.merge(y))
-}
-
-class BaseExtend extends BaseMerge with ExtendDSL {
-  override protected def extendI(s: SelectorExp, selector: SelectorExp): SelectorExp = ???
-}
-
-object Base extends BaseExtend with MixinDSL {
-
 }
