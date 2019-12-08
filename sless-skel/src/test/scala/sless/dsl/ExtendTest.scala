@@ -11,8 +11,8 @@ class ExtendTest extends FunSuite{
         prop("width") := value("100%")
       },
       (All ## "id-name1") {
-      prop("height") := value("95%")
-    },
+        prop("height") := value("95%")
+      },
       (All ## "id-name1" ## "id-name2") {
         prop("height") := value("95%")
       }
