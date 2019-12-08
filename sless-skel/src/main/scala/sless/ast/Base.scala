@@ -3,9 +3,7 @@ package sless.ast
 import sless.dsl._
 import sless.ast.exp._
 
-object Base extends BaseLint
-
-class Base extends PropertyDSL with SelectorDSL with ValueDSL with Compilable {
+class Base extends PropertyDSL with SelectorDSL with ValueDSL with Compilable with LintDSL {
 
   override type Rule = RuleExp
   override type Css = CssExp
@@ -41,13 +39,13 @@ class Base extends PropertyDSL with SelectorDSL with ValueDSL with Compilable {
   override def compile(sheet: Css): String = sheet.compile()
   override def pretty(sheet: Css, spaces: Int): String = sheet.pretty(spaces)
 
-}
-
-class BaseLint extends Base with LintDSL {
   override def removeEmptyRules(css: Css): (Boolean, Css) = css.withoutEmptyRules
   override def aggregateMargins(css: Css): (Boolean, Css) = css.aggregate(prop("margin-top"),
     prop("margin-right"),
     prop("margin-bottom"),
     prop("margin-left"))
   override def limitFloats(css: Css, n: Integer): Boolean = css.occurrences(prop("float")) > n
+
 }
+
+object Base extends Base
