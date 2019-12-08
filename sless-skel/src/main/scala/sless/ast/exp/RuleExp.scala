@@ -10,9 +10,9 @@ case class RuleExp(selector: SelectorExp, elements: Seq[RuleOrDeclaration], over
     })
   }
 
-  override def compile(): String = commentString + selector.compile() + "{" + declarations.map(_.compile()).mkString + "}"
+  override def compile(): String = comment() + selector.compile() + "{" + declarations.map(_.compile()).mkString + "}"
   override def pretty(spaces: Int): String =
-    commentString(_.+("\n")) + selector.pretty(spaces) + " {\n" + declarations.map(" " * spaces + _.pretty(spaces) + "\n").mkString + "}"
+    comment(_.+("\n")) + selector.pretty(spaces) + " {\n" + declarations.map(" " * spaces + _.pretty(spaces) + "\n").mkString + "}"
 
   def isEmpty: Boolean = declarations.isEmpty
   def occurrences(p: PropertyExp): Int = declarations.count(_.property == p)
