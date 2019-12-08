@@ -18,7 +18,7 @@ case class SelectorListExp(s: Seq[SelectorExp]) extends SelectorExp {
   override def compile(): String = s.map(_.compile()).mkString(",")
   override def pretty(spaces: Int): String = s.map(_.pretty(spaces)).mkString(", ")
   override def replace(sel: SelectorExp, rep: SelectorExp): SelectorExp = SelectorListExp(s.map(_.replace(sel, rep)))
-  override def contains(other: SelectorExp): Boolean = super.contains(other) | s.exists(_.contains(other))
+  override def contains(other: SelectorExp): Boolean = super.contains(other) | s.contains(other)
 }
 
 case class SelectorTypeExp(s: String) extends SelectorExp {
