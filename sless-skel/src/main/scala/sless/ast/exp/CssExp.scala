@@ -16,6 +16,5 @@ case class CssExp(rs: Seq[RuleExp]) extends Expression {
   }
 
   def merge(cssExp: CssExp): CssExp = ???
-  protected def rule(selector: SelectorExp) = ???
 
 }

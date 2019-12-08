@@ -1,6 +1,9 @@
 package sless.ast.exp
 
 sealed trait SelectorExp extends Expression {
+  def ground(parent: SelectorExp): SelectorExp =
+    if (this.contains(SelectorParent)) replace(SelectorParent, parent)
+    else SelectorCombinatorExp(parent, this, " ")
   def replace(sel: SelectorExp, rep: SelectorExp): SelectorExp = if (this == sel) rep else this
   def contains(other: SelectorExp): Boolean = this == other
 }
