@@ -29,7 +29,7 @@ class Base extends PropertyDSL with SelectorDSL with ValueDSL with Compilable {
   override def tipe(string: String): Selector = SelectorTypeExp(string)
   override val All: Selector = SelectorAllExp()
 
-  override protected def bindTo(s: Selector, declarations: Seq[Declaration]): Rule = RuleGroundExp(s, declarations)
+  override protected def bindTo(s: Selector, declarations: Seq[Declaration]): Rule = RuleExp(s, declarations)
 
   override def prop(string: String): Property = PropertyExp(string)
   override protected def assign(p: Property, value: Value): Declaration = DeclarationExp(p, value)
@@ -42,10 +42,9 @@ class Base extends PropertyDSL with SelectorDSL with ValueDSL with Compilable {
 }
 
 class BaseComment extends BaseLint with CommentDSL {
-  override protected def commentRule(rule: Rule, str: String): Rule =
-    new Rule(rule.selector, rule.elements) with CommentableBefore {override val comment: String = str}
+  override protected def commentRule(rule: Rule, str: String): Rule = rule.copy(rule.selector, rule.elements, str)
   override protected def commentDeclaration(declaration: Declaration, str: String): Declaration =
-    new Declaration(declaration.property, declaration.value) with CommentableAfter {override val comment: String = str}
+    declaration.copy(declaration.property, declaration.value, str)
 }
 
 class BaseLint extends Base with LintDSL {

@@ -1,8 +1,10 @@
 package sless.ast.exp
 
-case class CssExp(rules: Seq[RuleExp]) extends Expression {
+case class CssExp(rs: Seq[RuleExp]) extends Expression {
 
-  override def compile(): String = rules.flatMap(_.flatten()).map(_.compile()).mkString("")
+  lazy val rules: Seq[RuleExp] = rs.flatMap(_.flatten())
+
+  override def compile(): String = rules.map(_.compile()).mkString("")
   override def pretty(spaces: Int): String = rules.flatMap(_.flatten()).map(_.pretty(spaces)).mkString("\n\n")
 
   def occurrences(p: PropertyExp): Int = rules.foldRight(0)((r,x) => x + r.occurrences(p)) // rules.map(_.occurrences(p)).sum
