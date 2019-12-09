@@ -2,10 +2,10 @@ package sless.ast.exp
 
 case class CssExp(rs: Seq[RuleExp]) extends Expression {
 
-  lazy val rules: Seq[RuleExp] = rs.flatMap(_.flatten())
+  lazy val rules: Seq[RuleExp] = extend(rs.flatMap(_.flatten()))
 
   override def compile(): String = rules.map(_.compile()).mkString("")
-  override def pretty(spaces: Int): String = rules.flatMap(_.flatten()).map(_.pretty(spaces)).mkString("\n\n")
+  override def pretty(spaces: Int): String = rules.map(_.pretty(spaces)).mkString("\n\n")
 
   def occurrences(p: PropertyExp): Int = rules.foldRight(0)((r,x) => x + r.occurrences(p))
   def withoutEmptyRules: (Boolean, CssExp) = (rules.exists(_.isEmpty), CssExp(rules.filterNot(_.isEmpty)))
@@ -15,5 +15,8 @@ case class CssExp(rs: Seq[RuleExp]) extends Expression {
   }
 
   def merge(cssExp: CssExp): CssExp = ???
+
+  def extend(rules: Seq[RuleExp]): Seq[RuleExp] =
+    rules.foldLeft(rules)((cur, r) => cur.map(subject => subject.copy(r.selector.extend(subject.selector), subject.elements)))
 
 }
