@@ -2,7 +2,7 @@ package sless.ast.exp
 
 import sless.ast.exp.selector._
 
-case class SelectorExp(elements: Seq[SelectorElementExp]) extends Expression {
+case class SelectorExp(elements: Seq[SelectorElementExp], descendants: Seq[SelectorExp] = List()) extends Expression {
 
   override def compile(): String = elements.map(_.compile()).mkString(",")
   override def pretty(spaces: Int): String = elements.map(_.pretty(spaces)).mkString(", ")
@@ -10,7 +10,7 @@ case class SelectorExp(elements: Seq[SelectorElementExp]) extends Expression {
   def replace(el: SelectorElementExp, rep: SelectorExp): SelectorExp = SelectorExp(elements.flatMap(x => if (el == x) rep.elements else List(x)))
 
   def ground(parent: SelectorExp): SelectorExp =
-    if (elements.exists(!_.grounded)) SelectorExp(elements.flatMap(_.ground(parent.elements)))
+    if (elements.exists(!_.grounded)) SelectorExp(elements.flatMap(_.replace(SelectorParentExp, parent.elements)))
     else parent.combine(this, " ")
 
   def overlap(other: SelectorExp): Option[(Option[SelectorExp], SelectorExp, Option[SelectorExp])] = ???
