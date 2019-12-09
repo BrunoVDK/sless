@@ -1,5 +1,7 @@
 package sless.ast.exp
 
+import sless.ast.exp.selector.SelectorExp
+
 case class RuleExp(selector: SelectorExp, elements: Seq[RuleOrDeclaration], override val comment: String = "") extends RuleOrDeclaration with Commentable {
 
   lazy val declarations: Seq[DeclarationExp] = elements.flatMap(_ match {case d: DeclarationExp => Some(d) ; case _ => None})

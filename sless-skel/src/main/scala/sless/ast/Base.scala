@@ -26,7 +26,7 @@ class Base extends PropertyDSL with SelectorDSL with ValueDSL with Compilable wi
   override protected def child(s1: Selector, s2: Selector): Selector = s1.combine(s2, ">")
   override protected def descendant(s1: Selector, s2: Selector): Selector = s1.combine(s2, " ")
 
-  override protected def group(selectors: Seq[Selector]): Selector = SelectorExp(selectors.flatMap(_.elements))
+  override protected def group(selectors: Seq[Selector]): Selector = SelectorExp(selectors.flatMap(_.elements), selectors.flatMap(_.extensions))
   override def tipe(string: String): Selector = SelectorExp(List(SelectorTypeExp(string)))
   override val All: Selector = SelectorExp(List(SelectorAllExp()))
 

@@ -1,6 +1,6 @@
-package sless.ast.exp
+package sless.ast.exp.selector
 
-import sless.ast.exp.selector._
+import sless.ast.exp.Expression
 
 case class SelectorExp(elements: Seq[SelectorElementExp], extensions: Seq[SelectorExp => SelectorExp] = List()) extends Expression {
 
