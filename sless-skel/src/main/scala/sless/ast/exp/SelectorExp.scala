@@ -14,8 +14,6 @@ case class SelectorExp(elements: Seq[SelectorElementExp], extensions: Seq[Select
     if (elements.exists(!_.grounded)) SelectorExp(elements.flatMap(_.replace(SelectorParentExp, parent.elements)), extensions)
     else parent.combine(this, " ")
 
-  def overlap(other: SelectorExp): Option[(Option[SelectorExp], SelectorExp, Option[SelectorExp])] = ???
-
   def modify(mod: SelectorElementExp => SelectorElementExp) = SelectorExp(elements.map(mod(_)), extensions)
   def combine(other: SelectorExp, separator: String) = SelectorExp(
     (this.elements.init :+ SelectorCombinatorExp(this.elements.last, other.elements.head, separator))
@@ -24,11 +22,17 @@ case class SelectorExp(elements: Seq[SelectorElementExp], extensions: Seq[Select
   )
 
   def extend(other: SelectorExp): SelectorExp = extensions.foldLeft(other)((cur, extension) => extension(cur))
-  def extend(toExtend: SelectorExp, extension: SelectorExp, from: Int = 0): SelectorExp = {
+  def applyExtension(toExtend: SelectorExp, extension: SelectorExp, from: Int = 0): SelectorExp = {
     val idx = elements.indexOfSlice(toExtend.elements, from)
     if (idx < 0) SelectorExp(elements)
     else SelectorExp(elements.patch(idx + toExtend.elements.length, extension.elements, 0)).
-      extend(toExtend, extension, idx + toExtend.elements.length + extension.elements.length)
+      applyExtension(toExtend, extension, idx + toExtend.elements.length + extension.elements.length)
+  }
+
+  def intersect(other: SelectorExp): Option[(SelectorExp, SelectorExp, SelectorExp)] = { // returns (Left outer part, intersect, right outer part)
+    val intersect = elements.intersect(other.elements)
+    if (intersect.isEmpty) None
+    else Some(SelectorExp(elements.diff(intersect), extensions), SelectorExp(intersect), SelectorExp(other.elements.diff(intersect), other.extensions))
   }
 
 }

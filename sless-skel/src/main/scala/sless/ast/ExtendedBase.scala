@@ -14,10 +14,10 @@ class ExtendedBase extends Base with CommentDSL with NestedSelectorDSL with Bett
   override val Parent: Selector = SelectorExp(List(SelectorParentExp))
   override protected def bindWithNesting(s: Selector, rules: Seq[RuleOrDeclaration]): Rule = RuleExp(s, rules)
 
-  override def mergeSheets(cssSheets: Css*): Css = cssSheets.reduce((x,y) => x.merge(y))
+  override def mergeSheets(cssSheets: Css*): Css = cssSheets.reduceLeft((x,y) => x.merge(y))
 
   override protected def extendI(s: Selector, selector: Selector): Selector =
-    s.copy(s.elements, ((x: SelectorExp) => x.extend(selector, s)) +: s.extensions)
+    s.copy(s.elements, ((x: SelectorExp) => x.applyExtension(selector, s)) +: s.extensions)
 
 }
 

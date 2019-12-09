@@ -14,7 +14,7 @@ case class CssExp(rs: Seq[RuleExp]) extends Expression {
     (!res.exists(_._1 == false), CssExp(res.map(_._2)))
   }
 
-  def merge(cssExp: CssExp): CssExp = ???
+  def merge(right: CssExp): CssExp = CssExp(rules.foldLeft(right.rules)((acc, rule) => acc.flatMap(_.merge(rule))))
 
   def extend(rules: Seq[RuleExp]): Seq[RuleExp] =
     rules.foldLeft(rules)((cur, r) => cur.map(subject => subject.copy(r.selector.extend(subject.selector), subject.elements)))

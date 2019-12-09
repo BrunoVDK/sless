@@ -28,4 +28,13 @@ case class RuleExp(selector: SelectorExp, elements: Seq[RuleOrDeclaration], over
     if (!isEmpty | rules.isEmpty) this +: rules.flatMap(_.flatten())
     else rules.flatMap(_.flatten())
 
+  def merge(other: RuleExp): Seq[RuleExp] = selector.intersect(other.selector) match { // Other is 'left' rule
+    case None => List(other, this) // Nothing changes
+    case Some((left, intersect, right)) => List(
+      if (right.elements.nonEmpty) Some(copy(right, other.declarations, other.comment)) else None,
+      Some(copy(intersect, declarations ++ other.declarations.filterNot(p => declarations.exists(_.property == p.property)))),
+      if (left.elements.nonEmpty) Some(copy(left, declarations, comment)) else None
+    ).flatten
+  }
+
 }
