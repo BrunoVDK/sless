@@ -3,6 +3,8 @@
     <words>
       <w>combinators</w>
       <w>commentable</w>
+      <w>vmax</w>
+      <w>vmin</w>
     </words>
   </dictionary>
 </component>

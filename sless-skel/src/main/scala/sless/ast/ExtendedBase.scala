@@ -1,6 +1,7 @@
 package sless.ast
 
 import sless.ast.exp._
+import sless.ast.exp.measure._
 import sless.ast.exp.selector._
 import sless.dsl._
 
@@ -18,6 +19,14 @@ class ExtendedBase extends Base with CommentDSL with NestedSelectorDSL with Bett
 
   override protected def extendI(s: Selector, selector: Selector): Selector =
     s.copy(s.elements, ((x: SelectorExp) => x.applyExtension(selector, s)) +: s.extensions)
+
+  override def inherit: ValueExp = ValueInheritExp
+  override def initial: ValueExp = ValueInitialExp
+
+  override type MarginWidth = ValueMarginWidthExp
+  override val Margin: Seq[ValueMarginWidthExp] => ValueMarginExp = ValueMarginExp
+  override def auto: MarginWidth = ValueMarginWidthExp(Auto)
+  override def length[T: Numeric](x: T, s: String): MarginWidth = ValueMarginWidthExp(Length(x, Unit.unit(s)))
 
 }
 
