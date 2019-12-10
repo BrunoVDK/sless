@@ -6,7 +6,7 @@ trait BetterValuesDSL extends ValueDSL {
   def initial: Value
 
   type MarginWidth
-  val Margin: (MarginWidth*) => Value
+  val margin: (MarginWidth*) => Value
   def auto: MarginWidth
   def length[T: Numeric](x: T, symbol: String): MarginWidth
 

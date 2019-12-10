@@ -15,13 +15,11 @@ A few concrete examples of what would need to happen when extending the DSL any 
 
 Write which files, if any, contain extra self-written tests. If you did something extra impressive let us know here as well!
 
-In `GeneralTest` a few custom tests were written to check for clashes between extensions. Some tests particular to certain extensions were added as well.
+In `GeneralTest` a few custom tests were written to check for clashes between extensions. Some tests particular to certain extensions were added as well (always in the respective classes).
 
 ## Better Values
 
-Explain your implementation briefly, if you chose to implement this extension.
-
-???????????
+I used objects to represent various units and a `Length` case class representing a `CSS` length. Both `Length` and the `Auto` extend the `Measure` trait. A test class ('`BetterValuesTest`') is included.
 
 ## Improving original features
 

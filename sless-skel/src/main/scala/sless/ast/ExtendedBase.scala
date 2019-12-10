@@ -24,9 +24,9 @@ class ExtendedBase extends Base with CommentDSL with NestedSelectorDSL with Bett
   override def initial: ValueExp = ValueInitialExp
 
   override type MarginWidth = ValueMarginWidthExp
-  override val Margin: Seq[ValueMarginWidthExp] => ValueMarginExp = ValueMarginExp
+  override val margin: Seq[ValueMarginWidthExp] => ValueMarginExp = ValueMarginExp
   override def auto: MarginWidth = ValueMarginWidthExp(Auto)
-  override def length[T: Numeric](x: T, s: String): MarginWidth = ValueMarginWidthExp(Length(x, Unit.unit(s)))
+  override def length[T: Numeric](x: T, s: String): MarginWidth = ValueMarginWidthExp(Length(x, s))
 
 }
 
