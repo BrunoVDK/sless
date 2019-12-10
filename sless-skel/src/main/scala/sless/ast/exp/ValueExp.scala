@@ -1,7 +1,5 @@
 package sless.ast.exp
 
-import sless.ast.exp.measure.Measure
-
 sealed trait ValueExp extends Expression {
   def aggregate(other: ValueExp): ValueExp = this
 }

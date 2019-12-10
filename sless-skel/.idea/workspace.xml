@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3c5fb62-3b36-45c4-9a19-655571ab4f81" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../FILLME.md" beforeDir="false" afterPath="$PROJECT_DIR$/../FILLME.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/Measure.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/ExtendedBase.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/ExtendedBase.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/ValueExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/ValueExp.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/measure/Length.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/measure/Length.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/measure/Unit.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/dsl/BetterValuesDSL.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/dsl/BetterValuesDSL.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/sless/dsl/BetterValuesTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/sless/dsl/BetterValuesTest.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/measure/Auto.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/measure/Length.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/measure/Measure.scala" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

@@ -1,7 +1,6 @@
 package sless.ast
 
 import sless.ast.exp._
-import sless.ast.exp.measure._
 import sless.ast.exp.selector._
 import sless.dsl._
 
