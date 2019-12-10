@@ -58,4 +58,21 @@ class LessLintTest extends FunSuite{
     val lintedBool2 = limitFloats(ex2,1)
     assert(lintedBool2 === false)
   }
+
+  test("Remove duplicate properties") {
+    val sheet = css(
+      All (
+        prop("width") := value("100%"),
+        prop("width") := value("100%"),
+      ),
+      All (
+        prop("height") := value("50%"),
+        prop("height") := value("50%"),
+      )
+    )
+    val res = removeDuplicateProperties(sheet)
+    assert(res._1 === true)
+    assert(compile(res._2) == "*{width:100%;}*{height:50%;}")
+  }
+
 }

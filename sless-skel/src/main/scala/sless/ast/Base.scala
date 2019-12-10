@@ -41,6 +41,7 @@ class Base extends PropertyDSL with SelectorDSL with ValueDSL with Compilable wi
   override def pretty(sheet: Css, spaces: Int): String = sheet.pretty(spaces)
 
   override def removeEmptyRules(css: Css): (Boolean, Css) = css.withoutEmptyRules
+  override def removeDuplicateProperties(css: CssExp): (Boolean, CssExp) = css.withoutDuplicateProperties
   override def aggregateMargins(css: Css): (Boolean, Css) = css.aggregate(prop("margin-top"),
     prop("margin-right"),
     prop("margin-bottom"),

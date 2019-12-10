@@ -32,7 +32,11 @@ case class SelectorExp(elements: Seq[SelectorElementExp], extensions: Seq[Select
   def intersect(other: SelectorExp): Option[(SelectorExp, SelectorExp, SelectorExp)] = { // returns (Left outer part, intersect, right outer part)
     val intersect = elements.intersect(other.elements)
     if (intersect.isEmpty) None
-    else Some(SelectorExp(elements.diff(intersect), extensions), SelectorExp(intersect), SelectorExp(other.elements.diff(intersect), other.extensions))
+    else Some(
+      SelectorExp(elements.diff(intersect), extensions),
+      SelectorExp(intersect),
+      SelectorExp(other.elements.diff(intersect), other.extensions)
+    )
   }
 
 }

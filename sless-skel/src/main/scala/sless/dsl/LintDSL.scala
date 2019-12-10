@@ -14,6 +14,10 @@ trait LintDSL extends BaseDSL {
     */
   def removeEmptyRules(css : Css) : (Boolean, Css)
 
+  /**
+    * Check if the given sheet has duplicate properties.
+    */
+  def removeDuplicateProperties(css: Css) : (Boolean, Css)
 
   /**
     * Check if the given sheet has any style rules with a  declaration for all four properties from the set
@@ -27,4 +31,5 @@ trait LintDSL extends BaseDSL {
     * Check if the given sheet contains strictly more than n 'float' properties and, if so, returns true, otherwise false.
     */
   def limitFloats(css : Css, n : Integer) : Boolean
+
 }

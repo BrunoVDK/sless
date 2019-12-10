@@ -16,8 +16,10 @@ case class RuleExp(selector: SelectorExp, elements: Seq[RuleOrDeclaration], over
   override def pretty(spaces: Int): String =
     comment(_.+("\n")) + selector.pretty(spaces) + " {\n" + declarations.map(" " * spaces + _.pretty(spaces) + "\n").mkString + "}"
 
-  def isEmpty: Boolean = declarations.isEmpty
+  val isEmpty: Boolean = declarations.isEmpty
   def occurrences(p: PropertyExp): Int = declarations.count(_.property == p)
+  lazy val hasDuplicates: Boolean = withoutDuplicates.elements.size < declarations.size
+  lazy val withoutDuplicates: RuleExp = copy(selector, declarations.groupBy(_.property).values.map(_.head).toSeq, comment)
 
   def aggregate(ps: Seq[PropertyExp]): (Boolean, RuleExp) = {
     val vs = ps.flatMap(p => declarations.find(_.property == p)).map(_.value)

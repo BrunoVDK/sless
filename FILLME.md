@@ -25,7 +25,7 @@ I used objects to represent various units and a `Length` case class representing
 
 If you chose to extend some of the original features as an extensions, properly document what you did here.
 
-???????????
+There are a few extra lint rules in the source code ; the removal of duplicate properties from rules
 
 ## Custom Extension
 

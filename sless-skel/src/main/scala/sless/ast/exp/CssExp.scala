@@ -9,6 +9,7 @@ case class CssExp(rs: Seq[RuleExp]) extends Expression {
 
   def occurrences(p: PropertyExp): Int = rules.foldRight(0)((r,x) => x + r.occurrences(p))
   def withoutEmptyRules: (Boolean, CssExp) = (rules.exists(_.isEmpty), CssExp(rules.filterNot(_.isEmpty)))
+  def withoutDuplicateProperties: (Boolean, CssExp) = (rs.exists(_.hasDuplicates), CssExp(rs.map(_.withoutDuplicates)))
   def aggregate(ps: PropertyExp*): (Boolean, CssExp) = {
     val res = rules.map(_.aggregate(ps))
     (!res.exists(_._1 == false), CssExp(res.map(_._2)))
