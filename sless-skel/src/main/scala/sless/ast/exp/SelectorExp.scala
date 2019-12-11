@@ -24,7 +24,6 @@ case class SelectorExp(elements: Seq[SelectorElementExp], extensions: Seq[(Selec
   )
 
   def addExtension(toExtend: SelectorExp, extension: SelectorExp): SelectorExp = copy(elements, (toExtend, extension) +: extensions)
-  def extend(other: SelectorExp): SelectorExp = extensions.foldLeft(other)((cur, extension) => cur.applyExtension(extension._1, extension._2))
   def applyExtension(toExtend: SelectorExp, extension: SelectorExp, from: Int = 0): SelectorExp = {
     val idx = elements.indexOfSlice(toExtend.elements, from)
     if (idx < 0) SelectorExp(elements)

@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d3c5fb62-3b36-45c4-9a19-655571ab4f81" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/CssExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/CssExp.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/SelectorExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/SelectorExp.scala" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -152,16 +153,16 @@
           <option value="sless.dsl.LessNestingTest" />
           <option value="sless.dsl.BetterValuesTest" />
           <option value="sless.dsl.LessVariableTest" />
-          <option value="sless.dsl.ExtendTest" />
-          <option value="sless.dsl.CommentTest" />
-          <option value="sless.dsl.LessNestingTest" />
-          <option value="sless.dsl.MixinTest" />
-          <option value="sless.dsl.LessLintTest" />
-          <option value="sless.dsl.GeneralTest" />
-          <option value="sless.dsl.MergeTest" />
-          <option value="sless.dsl.CssTest" />
           <option value="sless.dsl.BetterValuesTest" />
           <option value="sless.dsl.LessVariableTest" />
+          <option value="sless.dsl.GeneralTest" />
+          <option value="sless.dsl.CssTest" />
+          <option value="sless.dsl.MergeTest" />
+          <option value="sless.dsl.MixinTest" />
+          <option value="sless.dsl.CommentTest" />
+          <option value="sless.dsl.LessLintTest" />
+          <option value="sless.dsl.LessNestingTest" />
+          <option value="sless.dsl.ExtendTest" />
         </list>
       </option>
       <option name="envs">
