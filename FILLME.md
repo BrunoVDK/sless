@@ -1,39 +1,33 @@
 # Sless
 
+All extensions were implemented. There are no mutables. Every type of `CSS` expression is represented by a case class (extending a sealed trait, if any). The DSL traits are implemented by a class (one class for the base functionalities, one that extends this class to implement the extensions). Both classes have an accompanying object which is used in the tests (all the tests use the `ExtendedBase` object).
+
+Every `Expression` represents a compilable entity. To compile a sheet, the `compile` member of `CSSExp` is called which forwards the call to its rules, which forward the call to their declarations, ... I made the assumption that list selectors cannot be nested since it is not valid `CSS`, though it is possible to combine and modifty list selectors leading to a new list selector instead (selectors are flattened as much as possible).
+
 ## Extensibility
 
-Briefly explain which files you have to change to introduce a new sless feature, e.g. add a new pseudo-class/-element, add support for namespaces, add at-rules, etc. 
-Hint: if this lists all the files in your project you should reevaluate your implementation.
+To introduce new pseudo-classes it suffices to add case classes extending `SelectorElementExp` and implementing the `DSL` methods that allow the user to construct them.
 
-A few concrete examples of what would need to happen when extending the DSL any further :
+Various implementations are possible depending on the at-rule. For example, `CSSExp` could be altered to function as a container of `RuleExp` as well as `CSSExp` expressions (much like what happens with the `RuleOrDeclaration` sum type). Then it can import its internal expression's rules upon construction. Or an import could be a separate type of rule which is interpreted differently when it is added to a sheet.
 
-- Adding a new pseudo-class or pseudo-element : 
-- Adding support for namespaces :
-- Adding @-rules : 
+Namespaces the way `less.js` does it is a matter of making full use of mixins.
 
 ## Extra
 
-Write which files, if any, contain extra self-written tests. If you did something extra impressive let us know here as well!
-
-In `GeneralTest` a few custom tests were written to check for clashes between extensions. Some tests particular to certain extensions were added as well (always in the respective classes).
+In `GeneralTest` a few custom tests were written to check for clashes between extensions. Some tests particular to certain extensions were added as well (always in the respective classes). `ExtendTest` is one example.
 
 ## Better Values
 
-I used objects to represent various units and a `Length` case class representing a `CSS` length. Both `Length` and the `Auto` extend the `Measure` trait. A test class ('`BetterValuesTest`') is included.
+I used case objects to represent various units and a `Length` case class representing a `CSS` length. Both the `Length` and `Auto` case classes extend the `Measure` trait. Implicit conversion is used to convert from a length to a margin width. A test class ('`BetterValuesTest`') is included which simply checks whether the values display right. While lengths can be summed or multiplied I did not make this feature available to users yet, as it is not clear how to do arithmetic with relative lengths.
 
 ## Improving original features
 
-If you chose to extend some of the original features as an extensions, properly document what you did here.
-
-There are a few extra lint rules in the source code ; the removal of duplicate properties from rules
+There's an extra lint rule to allow duplicate properties. More values than just specific margins can be aggregated, and it's possible to count occurences of any property.
 
 ## Custom Extension
 
-If you came up with your own extension, properly document it here. Explain its
-intended behavior and showcase by example.
-
-???????????
+I didn't implement a custom extension.
 
 ## Feedback on the Project 
 
-Interesting project, learned something that's likely to be useful in the future. 
+Interesting project, learned something that's likely to be useful in the future. I like the language though I still have some trouble getting the hang of some of its features (like implicits).

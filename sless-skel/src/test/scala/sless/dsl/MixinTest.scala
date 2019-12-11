@@ -30,4 +30,16 @@ class MixinTest extends FunSuite {
       MixinImplementation.dsl.compile(ex) ===
         """*{property-pre:value-pre;Hey-Im-a-mixin:value-1;property-post:value-post;}""")
   }
+
+  test("Mixing map") {
+    val sizes: Map[String, Int => Seq[Declaration]] = Map(
+      "s1" -> (x => List(prop("width") := value(x.toString + "px"), prop("height") := value(x.toString + "px"))),
+      "s2" -> (x => List(prop("width") := value((2*x).toString + "px"), prop("width") := value((2*x).toString + "px")))
+    )
+    val ex1 = css(All.mixin(sizes("s1")(100)))
+    val ex2 = css(All.mixin(sizes("s2")(100)))
+    assert(compile(ex1) === """*{width:100px;height:100px;}""")
+    assert(compile(ex2) === """*{width:200px;width:200px;}""")
+  }
+
 }
