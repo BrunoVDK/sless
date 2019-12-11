@@ -4,7 +4,7 @@ package sless.ast.exp
   * A selector expression is a selector at the level of a rule. It is a container for selector elements.
   *   Its extensions are a bunch of <selectors> 'to-be-extended-with' <selectors> relationships.
   */
-case class SelectorExp(elements: Seq[SelectorElementExp], extensions: Map[SelectorExp,SelectorExp] = Map()) extends Expression {
+case class SelectorExp(elements: Seq[SelectorElementExp], extensions: Seq[(SelectorExp,SelectorExp)] = List()) extends Expression {
 
   override def compile(): String = elements.map(_.compile()).mkString(",")
   override def pretty(spaces: Int): String = elements.map(_.pretty(spaces)).mkString(", ")
@@ -23,9 +23,8 @@ case class SelectorExp(elements: Seq[SelectorElementExp], extensions: Map[Select
     extensions
   )
 
-  def addExtension(toExtend: SelectorExp, extension: SelectorExp): SelectorExp = copy(elements, extensions + (toExtend -> extension))
-
-  def extend(other: SelectorExp): SelectorExp = extensions.foldLeft(other)((cur, extension) => extension(cur))
+  def addExtension(toExtend: SelectorExp, extension: SelectorExp): SelectorExp = copy(elements, (toExtend, extension) +: extensions)
+  def extend(other: SelectorExp): SelectorExp = extensions.foldLeft(other)((cur, extension) => cur.applyExtension(extension._1, extension._2))
   def applyExtension(toExtend: SelectorExp, extension: SelectorExp, from: Int = 0): SelectorExp = {
     val idx = elements.indexOfSlice(toExtend.elements, from)
     if (idx < 0) SelectorExp(elements)
