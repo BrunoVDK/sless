@@ -11,7 +11,7 @@ case class RuleExp(selector: SelectorExp, elements: Seq[RuleOrDeclaration], over
   lazy val declarations: Seq[DeclarationExp] = elements.flatMap(_ match {case d: DeclarationExp => Some(d) ; case _ => None})
   lazy val rules: Seq[RuleExp] = {
     elements.flatMap(_ match {
-      case r: RuleExp => Some(r.copy(r.selector.ground(selector), r.elements, comment))
+      case r: RuleExp => Some(r.copy(r.selector.ground(selector), r.elements, r.comment))
       case _ => None
     })
   }
