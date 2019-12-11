@@ -1,5 +1,8 @@
 package sless.ast.exp
 
+/**
+  * A value expression represents a CSS value. This can be a simple string or a more complex representation.
+  */
 sealed trait ValueExp extends Expression {
   def aggregate(other: ValueExp): ValueExp = this
 }

@@ -1,9 +1,11 @@
 package sless.ast
 
 import sless.ast.exp._
-import sless.ast.exp.selector._
 import sless.dsl._
 
+/**
+  * The extended base class implementing the traits for the base DSL as well as all other extensions in the assignment.
+  */
 class ExtendedBase extends Base with CommentDSL with NestedSelectorDSL with BetterValuesDSL with MergeDSL with ExtendDSL {
 
   override protected def commentRule(rule: Rule, str: String): Rule = rule.copy(rule.selector, rule.elements, str)
@@ -16,8 +18,7 @@ class ExtendedBase extends Base with CommentDSL with NestedSelectorDSL with Bett
 
   override def mergeSheets(cssSheets: Css*): Css = cssSheets.reduceLeft((x,y) => x.merge(y))
 
-  override protected def extendI(s: Selector, selector: Selector): Selector =
-    s.copy(s.elements, ((x: SelectorExp) => x.applyExtension(selector, s)) +: s.extensions)
+  override protected def extendI(s: Selector, selector: Selector): Selector = s.addExtension(selector, s)
 
   override def inherit: ValueExp = ValueInheritExp
   override def initial: ValueExp = ValueInitialExp

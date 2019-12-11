@@ -1,5 +1,8 @@
 package sless.ast.exp
 
+/**
+  * A measure represents a CSS length (with unit), or possibly the keyword 'auto'.
+  */
 sealed trait Measure
 
 case object Auto extends Measure { override def toString: String = "auto" }

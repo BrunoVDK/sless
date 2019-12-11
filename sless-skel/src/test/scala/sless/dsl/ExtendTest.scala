@@ -55,4 +55,16 @@ class ExtendTest extends FunSuite{
       ExtendImplementation.dsl.compile(ex) ===
         """*#id-name1.class-name1{width:100%;}*,*#id-name1{height:95%;}type1,*#id-name1.class-name1{height:95%;}""")
   }
+
+  test("Nested extension as a variable") {
+    val sel = All.extend(All)
+    val res = compile(css(
+      sel (),
+      sel (),
+      sel (),
+    ))
+    print(res)
+    assert(res === "*,*{}*,*{}*,*{}")
+  }
+
 }

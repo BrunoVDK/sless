@@ -1,25 +1,16 @@
-package sless.ast.exp.selector
+package sless.ast.exp
 
-import sless.ast.exp._
-
+/**
+  * A selector element expression represents a part of a CSS selector. This can be anything but a list selector.
+  */
 sealed trait SelectorElementExp extends Expression {
   def grounded: Boolean = true
   def replace(el: SelectorElementExp, rep: Seq[SelectorElementExp]): Seq[SelectorElementExp] = if (el == this) rep else List(this)
 }
 
-case object SelectorParentExp extends SelectorElementExp {
-  override def grounded: Boolean = false
-}
-
-case class SelectorAllExp() extends SelectorElementExp {
-  override def pretty(spaces: Int): String = "*"
-}
-
-case class SelectorTypeExp(s: String) extends SelectorElementExp {
-  override def pretty(spaces: Int): String = s
-}
-
-// Combinators
+case object SelectorParentExp extends SelectorElementExp { override def grounded: Boolean = false }
+case class SelectorAllExp() extends SelectorElementExp { override def pretty(spaces: Int): String = "*" }
+case class SelectorTypeExp(s: String) extends SelectorElementExp { override def pretty(spaces: Int): String = s }
 
 case class SelectorCombinatorExp(s1: SelectorElementExp, s2: SelectorElementExp, sep: String) extends SelectorElementExp {
   override def compile(): String = s1.compile() + sep + s2.compile()
@@ -31,8 +22,6 @@ case class SelectorCombinatorExp(s1: SelectorElementExp, s2: SelectorElementExp,
     (new1.init :+ SelectorCombinatorExp(new1.last, new2.head, sep)) ++ new2.tail
   }
 }
-
-// Modifiers
 
 case class SelectorModifierExp(s: SelectorElementExp, suffix: String) extends SelectorElementExp {
   override def compile(): String = s.compile() + suffix

@@ -1,8 +1,12 @@
 package sless.ast.exp
 
-import sless.ast.exp.selector.SelectorExp
-
-case class RuleExp(selector: SelectorExp, elements: Seq[RuleOrDeclaration], override val comment: String = "") extends RuleOrDeclaration with Commentable {
+/**
+  * A rule expression represents a CSS rule having a selector and a list of elements.
+  *   These elements can be either declarations or (when there's nesting) other rules.
+  *   Nested rules can be flattened which gives a list of rules.
+  *   Rules can also be merged with other rules.
+  */
+case class RuleExp(selector: SelectorExp, elements: Seq[RuleOrDeclaration], override val comment: String = "") extends RuleOrDeclaration with CommentableExp {
 
   lazy val declarations: Seq[DeclarationExp] = elements.flatMap(_ match {case d: DeclarationExp => Some(d) ; case _ => None})
   lazy val rules: Seq[RuleExp] = {

@@ -1,5 +1,8 @@
 package sless.ast.exp
 
+/**
+  * A CSS expression represents a CSS sheet.
+  */
 case class CssExp(rs: Seq[RuleExp]) extends Expression {
 
   lazy val rules: Seq[RuleExp] = extend(rs.flatMap(_.flatten()))

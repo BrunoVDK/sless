@@ -2,8 +2,10 @@ package sless.ast
 
 import sless.dsl._
 import sless.ast.exp._
-import sless.ast.exp.selector._
 
+/**
+  * The base class implementing the traits for the base DSL.
+  */
 class Base extends PropertyDSL with SelectorDSL with ValueDSL with Compilable with LintDSL {
 
   override type Rule = RuleExp
