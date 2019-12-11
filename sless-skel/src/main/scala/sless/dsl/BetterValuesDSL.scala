@@ -7,25 +7,40 @@ trait BetterValuesDSL extends ValueDSL {
 
   type MarginWidth
   val margin: (MarginWidth*) => Value
+
   def auto: MarginWidth
-  def length[T: Numeric](x: T, symbol: String): MarginWidth
+  def in[T: Numeric](x: T): MarginWidth
+  def mm[T: Numeric](x: T): MarginWidth
+  def cm[T: Numeric](x: T): MarginWidth
+  def px[T: Numeric](x: T): MarginWidth
+  def pt[T: Numeric](x: T): MarginWidth
+  def pc[T: Numeric](x: T): MarginWidth
+  def em[T: Numeric](x: T): MarginWidth
+  def ex[T: Numeric](x: T): MarginWidth
+  def ch[T: Numeric](x: T): MarginWidth
+  def rem[T: Numeric](x: T): MarginWidth
+  def vw[T: Numeric](x: T): MarginWidth
+  def vh[T: Numeric](x: T): MarginWidth
+  def vmin[T: Numeric](x: T): MarginWidth
+  def vmax[T: Numeric](x: T): MarginWidth
+  def percent[T: Numeric](x: T): MarginWidth
 
   implicit class BetterValuesShortHand[T: Numeric](x: T) {
-    def in: MarginWidth = length(x, "in")
-    def mm: MarginWidth = length(x, "mm")
-    def cm: MarginWidth = length(x, "cm")
-    def px: MarginWidth = length(x, "px")
-    def pt: MarginWidth = length(x, "pt")
-    def pc: MarginWidth = length(x, "pc")
-    def em: MarginWidth = length(x, "em")
-    def ex: MarginWidth = length(x, "ex")
-    def ch: MarginWidth = length(x, "ch")
-    def rem: MarginWidth = length(x, "rem")
-    def vw: MarginWidth = length(x, "vw")
-    def vh: MarginWidth = length(x, "vh")
-    def vmin: MarginWidth = length(x, "vmin")
-    def vmax: MarginWidth = length(x, "vmax")
-    def percent: MarginWidth = length(x, "%")
+    def in: MarginWidth = BetterValuesDSL.this.in(x)
+    def mm: MarginWidth = BetterValuesDSL.this.mm(x)
+    def cm: MarginWidth = BetterValuesDSL.this.cm(x)
+    def px: MarginWidth = BetterValuesDSL.this.px(x)
+    def pt: MarginWidth = BetterValuesDSL.this.pt(x)
+    def pc: MarginWidth = BetterValuesDSL.this.pc(x)
+    def em: MarginWidth = BetterValuesDSL.this.em(x)
+    def ex: MarginWidth = BetterValuesDSL.this.ex(x)
+    def ch: MarginWidth = BetterValuesDSL.this.ch(x)
+    def rem: MarginWidth = BetterValuesDSL.this.rem(x)
+    def vw: MarginWidth = BetterValuesDSL.this.vw(x)
+    def vh: MarginWidth = BetterValuesDSL.this.vh(x)
+    def vmin: MarginWidth = BetterValuesDSL.this.vmin(x)
+    def vmax: MarginWidth = BetterValuesDSL.this.vmax(x)
+    def percent: MarginWidth = BetterValuesDSL.this.percent(x)
   }
 
 }

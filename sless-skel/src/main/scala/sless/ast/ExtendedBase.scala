@@ -26,7 +26,22 @@ class ExtendedBase extends Base with CommentDSL with NestedSelectorDSL with Bett
   override type MarginWidth = ValueMarginWidthExp
   override val margin: Seq[ValueMarginWidthExp] => ValueMarginExp = ValueMarginExp
   override def auto: MarginWidth = ValueMarginWidthExp(Auto)
-  override def length[T: Numeric](x: T, s: String): MarginWidth = ValueMarginWidthExp(Length(x, s))
+
+  override def in[T: Numeric](x: T): ValueMarginWidthExp = Length(x, Inches)
+  override def mm[T: Numeric](x: T): ValueMarginWidthExp = Length(x, Millimeters)
+  override def cm[T: Numeric](x: T): ValueMarginWidthExp = Length(x, Centimeters)
+  override def px[T: Numeric](x: T): ValueMarginWidthExp = Length(x, Pixels)
+  override def pt[T: Numeric](x: T): ValueMarginWidthExp = Length(x, Points)
+  override def pc[T: Numeric](x: T): ValueMarginWidthExp = Length(x, Picas)
+  override def em[T: Numeric](x: T): ValueMarginWidthExp = Length(x, Ems)
+  override def ex[T: Numeric](x: T): ValueMarginWidthExp = Length(x, Exs)
+  override def ch[T: Numeric](x: T): ValueMarginWidthExp = Length(x, Chs)
+  override def rem[T: Numeric](x: T): ValueMarginWidthExp = Length(x, Rems)
+  override def vw[T: Numeric](x: T): ValueMarginWidthExp = Length(x, Vws)
+  override def vh[T: Numeric](x: T): ValueMarginWidthExp = Length(x, Vhs)
+  override def vmin[T: Numeric](x: T): ValueMarginWidthExp = Length(x, Vmin)
+  override def vmax[T: Numeric](x: T): ValueMarginWidthExp = Length(x, Vmax)
+  override def percent[T: Numeric](x: T): ValueMarginWidthExp = Length(x, Percent)
 
 }
 

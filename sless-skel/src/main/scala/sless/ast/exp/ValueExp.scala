@@ -25,3 +25,7 @@ case class ValueMarginExp(vs: Seq[ValueMarginWidthExp]) extends ValueExp {
 case class ValueMarginWidthExp(m: Measure) extends ValueExp {
   override def pretty(spaces: Int): String = m.toString
 }
+
+object ValueMarginWidthExp {
+  implicit def MarginWidth(m: Measure): ValueMarginWidthExp = ValueMarginWidthExp(m)
+}
