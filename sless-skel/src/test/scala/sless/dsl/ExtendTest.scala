@@ -59,8 +59,7 @@ class ExtendTest extends FunSuite{
   // Bit of commentary ; there are multiple interpretations here.
   //  - A variable holding a selector that extends may only extend once, or every time it is used
   //  - An extension occurring multiple times may be applied just once, or every time it is called
-  // I implemented multiple of these, but currently the one in use is where a variable with a selector that extends
-  //  will only extend once while the same extension occurring multiple times will be applied that many times.
+  // I implemented multiple ones but kept the simplest one to avoid problems with Parent references ; no duplicates
 
   test("Extension as a variable") {
     val sel = All.extend(All)
@@ -69,7 +68,6 @@ class ExtendTest extends FunSuite{
       sel (),
       sel (),
     ))
-    print(res)
     assert(res === "*,*{}*,*{}*,*{}")
   }
 
@@ -78,8 +76,7 @@ class ExtendTest extends FunSuite{
       All.extend(All) (),
       All.extend(All) (),
     ))
-    print(res)
-    assert(res === "*,*,*,*{}*,*,*,*{}")
+    assert(res === "*,*{}*,*{}")
   }
 
 }
