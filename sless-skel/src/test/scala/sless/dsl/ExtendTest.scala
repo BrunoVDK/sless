@@ -56,7 +56,13 @@ class ExtendTest extends FunSuite{
         """*#id-name1.class-name1{width:100%;}*,*#id-name1{height:95%;}type1,*#id-name1.class-name1{height:95%;}""")
   }
 
-  test("Nested extension as a variable") {
+  // Bit of commentary ; there are multiple interpretations here.
+  //  - A variable holding a selector that extends may only extend once, or every time it is used
+  //  - An extension occurring multiple times may be applied just once, or every time it is called
+  // I implemented multiple of these, but currently the one in use is where a variable with a selector that extends
+  //  will only extend once while the same extension occurring multiple times will be applied that many times.
+
+  test("Extension as a variable") {
     val sel = All.extend(All)
     val res = compile(css(
       sel (),
@@ -65,6 +71,15 @@ class ExtendTest extends FunSuite{
     ))
     print(res)
     assert(res === "*,*{}*,*{}*,*{}")
+  }
+
+  test("Duplicate extension") {
+    val res = compile(css(
+      All.extend(All) (),
+      All.extend(All) (),
+    ))
+    print(res)
+    assert(res === "*,*,*,*{}*,*,*,*{}")
   }
 
 }
