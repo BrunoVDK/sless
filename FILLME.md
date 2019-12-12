@@ -14,7 +14,7 @@ Namespaces the way `less.js` does it is a matter of making full use of mixins.
 
 ## Extra
 
-In `GeneralTest` a few custom tests were written to check for clashes between extensions. Some tests particular to certain extensions were added as well (always in the respective classes). `ExtendTest` is one example.
+In `GeneralTest` a few custom tests were written to check for clashes between extensions. Some tests particular to certain extensions were added as well (always in the respective classes). `ExtendTest` is one example. I also quickly tested a map for parametric mixins.
 
 ## Better Values
 
