@@ -18,7 +18,10 @@ case class CssExp(rs: Seq[RuleExp]) extends Expression {
     (!res.exists(_._1 == false), CssExp(res.map(_._2)))
   }
 
-  def merge(right: CssExp): CssExp = CssExp(rules.foldLeft(right.rules)((acc, rule) => acc.flatMap(_.merge(rule))))
+  def merge(right: CssExp): CssExp = CssExp(rules.foldRight(right.rules)((rule, acc) => {
+    val idx = acc.indexWhere(_.selector.intersect(rule.selector).isDefined)
+    if (idx < 0) rule +: acc else acc.patch(idx, acc(idx).merge(rule), 1)
+  }))
 
   def extend(rules: Seq[RuleExp]): Seq[RuleExp] = {
     val extensions = rules.map(_.selector).flatMap(_.extensions).distinct

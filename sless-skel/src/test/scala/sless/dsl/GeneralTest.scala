@@ -137,4 +137,36 @@ class GeneralTest extends FunSuite {
 
   }
 
+  test("Merging sheets with nesting, extensions and comments") {
+
+    val ex1 = css(
+      (All ## "container").nest (
+        (Parent |+ Parent) (
+          (prop("width") := value("95%")).comment("comment that is about to leave"),
+          (prop("height") := value("95%")).comment("comment that stays"),
+        )
+      )
+    )
+
+    val ex2 = css(
+      (All ## "container").nest (
+        N(All, (Parent |+ Parent)) (
+          (prop("width") := value("100%")).comment("this comment is here to stay"),
+        ).comment("hello"),
+        prop("display") := value("block")
+      ).comment("hi")
+    )
+
+    assert(compile(ex1) === """*#container+*#container{width:95%;/* comment that is about to leave */height:95%;/* comment that stays */}""")
+    assert(compile(ex2) === """/* hi */*#container{display:block;}/* hello */*,*#container+*#container{width:100%;/* this comment is here to stay */}""")
+    assert(compile(mergeSheets(ex1, ex2)) === """/* hi */*#container{display:block;}*#container+*#container{width:100%;/* this comment is here to stay */height:95%;/* comment that stays */}/* hello */*{width:100%;/* this comment is here to stay */}""")
+
+  }
+
+  test("Empty nested rule linting") {
+
+    print(compile(removeEmptyRules(css ( All.nest (prop("width") := value("100%"), All ())))._2) === """""")
+
+  }
+
 }

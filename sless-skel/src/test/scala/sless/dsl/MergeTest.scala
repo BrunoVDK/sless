@@ -52,4 +52,14 @@ class MergeTest extends FunSuite {
         """*.class-name2{width:100%;}*.class-name1{background-color:blue;width:95%;}""")
   }
 
+  test("Quadruple merge") {
+
+    val ex1 = css(All (prop("width") := value("100%")))
+    val ex2 = css(All (prop("width") := value("90%")))
+    val ex3 = css(All (prop("width") := value("80%")))
+    val ex4 = css(All (prop("width") := value("70%")))
+    assert(compile(mergeSheets(ex1, ex2, ex3, ex4)) === "*{width:70%;}")
+
+  }
+
 }

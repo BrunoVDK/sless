@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3c5fb62-3b36-45c4-9a19-655571ab4f81" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../FILLME.md" beforeDir="false" afterPath="$PROJECT_DIR$/../FILLME.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/CssExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/CssExp.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/RuleExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/RuleExp.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/SelectorExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/SelectorExp.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/sless/dsl/GeneralTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/sless/dsl/GeneralTest.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/sless/dsl/MergeTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/sless/dsl/MergeTest.scala" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,27 +59,7 @@
     </option>
   </component>
   <component name="RunManager" selected="ScalaTest.ScalaTests in 'scala'">
-    <configuration name="BetterValuesTest.Simple checks" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
-      <module name="sless" />
-      <option name="allowRunningInParallel" value="false" />
-      <option name="testKind" value="Class" />
-      <option name="envs">
-        <map />
-      </option>
-      <option name="javaOptions" value="" />
-      <option name="jrePath" />
-      <option name="searchTest" value="Across module dependencies" />
-      <option name="showProgressMessages" value="true" />
-      <option name="testArgs" value="" />
-      <option name="testClassPath" value="sless.dsl.BetterValuesTest" />
-      <option name="useSbt" value="false" />
-      <option name="useUiWithSbt" value="false" />
-      <option name="workingDirectory" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GeneralTest.Comments within nested rules" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="GeneralTest.Empty nested rule" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="sless" />
       <option name="allowRunningInParallel" value="false" />
       <option name="testKind" value="Class" />
@@ -88,6 +72,7 @@
       <option name="showProgressMessages" value="true" />
       <option name="testArgs" value="" />
       <option name="testClassPath" value="sless.dsl.GeneralTest" />
+      <option name="testName" value="Empty nested rule" />
       <option name="useSbt" value="false" />
       <option name="useUiWithSbt" value="false" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
@@ -95,7 +80,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GeneralTest.Linting on nesting" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="GeneralTest.Merging sheets with nesting, extensions and comments" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="sless" />
       <option name="allowRunningInParallel" value="false" />
       <option name="testKind" value="Class" />
@@ -108,6 +93,7 @@
       <option name="showProgressMessages" value="true" />
       <option name="testArgs" value="" />
       <option name="testClassPath" value="sless.dsl.GeneralTest" />
+      <option name="testName" value="Merging sheets with nesting, extensions and comments" />
       <option name="useSbt" value="false" />
       <option name="useUiWithSbt" value="false" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
@@ -115,7 +101,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MixinTest.Mixing map" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="MergeTest.Merging retains rightmost overlapping property" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="sless" />
       <option name="allowRunningInParallel" value="false" />
       <option name="testKind" value="Class" />
@@ -127,7 +113,29 @@
       <option name="searchTest" value="Across module dependencies" />
       <option name="showProgressMessages" value="true" />
       <option name="testArgs" value="" />
-      <option name="testClassPath" value="sless.dsl.MixinTest" />
+      <option name="testClassPath" value="sless.dsl.MergeTest" />
+      <option name="testName" value="Merging retains rightmost overlapping property" />
+      <option name="useSbt" value="false" />
+      <option name="useUiWithSbt" value="false" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MergeTest.Quadruple merge" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="sless" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="testKind" value="Class" />
+      <option name="envs">
+        <map />
+      </option>
+      <option name="javaOptions" value="" />
+      <option name="jrePath" />
+      <option name="searchTest" value="Across module dependencies" />
+      <option name="showProgressMessages" value="true" />
+      <option name="testArgs" value="" />
+      <option name="testClassPath" value="sless.dsl.MergeTest" />
+      <option name="testName" value="Quadruple merge" />
       <option name="useSbt" value="false" />
       <option name="useUiWithSbt" value="false" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
@@ -151,16 +159,16 @@
           <option value="sless.dsl.LessNestingTest" />
           <option value="sless.dsl.BetterValuesTest" />
           <option value="sless.dsl.LessVariableTest" />
+          <option value="sless.dsl.MixinTest" />
+          <option value="sless.dsl.CommentTest" />
+          <option value="sless.dsl.LessVariableTest" />
+          <option value="sless.dsl.LessNestingTest" />
+          <option value="sless.dsl.CssTest" />
+          <option value="sless.dsl.GeneralTest" />
+          <option value="sless.dsl.MergeTest" />
           <option value="sless.dsl.BetterValuesTest" />
           <option value="sless.dsl.ExtendTest" />
-          <option value="sless.dsl.LessNestingTest" />
-          <option value="sless.dsl.LessVariableTest" />
           <option value="sless.dsl.LessLintTest" />
-          <option value="sless.dsl.MergeTest" />
-          <option value="sless.dsl.GeneralTest" />
-          <option value="sless.dsl.CssTest" />
-          <option value="sless.dsl.CommentTest" />
-          <option value="sless.dsl.MixinTest" />
         </list>
       </option>
       <option name="envs">
@@ -182,10 +190,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="ScalaTest.ScalaTests in 'scala'" />
-        <item itemvalue="ScalaTest.ScalaTests in 'scala'" />
-        <item itemvalue="ScalaTest.MixinTest.Mixing map" />
-        <item itemvalue="ScalaTest.BetterValuesTest.Simple checks" />
-        <item itemvalue="ScalaTest.GeneralTest.Linting on nesting" />
+        <item itemvalue="ScalaTest.GeneralTest.Empty nested rule" />
+        <item itemvalue="ScalaTest.GeneralTest.Merging sheets with nesting, extensions and comments" />
+        <item itemvalue="ScalaTest.MergeTest.Quadruple merge" />
+        <item itemvalue="ScalaTest.MergeTest.Merging retains rightmost overlapping property" />
       </list>
     </recent_temporary>
   </component>
