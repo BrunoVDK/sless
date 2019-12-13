@@ -87,7 +87,7 @@ class ExtendTest extends FunSuite{
       (All ## "id2") (declaration),
       N(All ## "id1", All ## "id2") (declaration),
     ))
-    print(res)
+    assert(res === """*{margin:auto;}*#id1,*{margin:auto;}*#id2,*{margin:auto;}*#id1,*,*#id2,*{margin:auto;}""")
   }
 
 }

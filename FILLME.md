@@ -4,11 +4,13 @@ All extensions were implemented. There are no mutables. Every type of `CSS` expr
 
 Every `Expression` represents a compilable entity. To compile a sheet, the `compile` member of `CSSExp` is called which forwards the call to its rules, which forward the call to their declarations, ... I made the assumption that list selectors cannot be nested since it is not valid `CSS`, though it is possible to combine and modifty list selectors leading to a new list selector instead (selectors are flattened as much as possible).
 
+One other assumption I made is that every selector extension pair `(selector_that_extends,selector_to_extend)` can only be applied once. This made my life easier, though other interpretations were also tried and not particularly difficult to implement.
+
 ## Extensibility
 
 To introduce new pseudo-classes it suffices to add case classes extending `SelectorElementExp` and implementing the `DSL` methods that allow the user to construct them.
 
-Various implementations are possible depending on the at-rule. For example, `CSSExp` could be altered to function as a container of `RuleExp` as well as `CSSExp` expressions (much like what happens with the `RuleOrDeclaration` sum type). Then it can import its internal expression's rules upon construction. Or an import could be a separate type of rule which is interpreted differently when it is added to a sheet.
+As for @-rules, various implementations are possible depending on which one it is. For an import rule for example, `CSSExp` could be altered to function as a container of `RuleExp` as well as `CSSExp` expressions (much like what happens with the `RuleOrDeclaration` sum type). Then it can import its internal expression's rules upon construction. Or an import could be a separate type of rule which is interpreted differently when it is added to a sheet.
 
 Namespaces the way `less.js` does it is a matter of making full use of mixins.
 

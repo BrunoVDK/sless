@@ -164,8 +164,22 @@ class GeneralTest extends FunSuite {
   }
 
   test("Empty nested rule linting") {
+    assert(compile(removeEmptyRules(css ( All.nest (prop("width") := value("100%"), All ())))._2) === """*{width:100%;}""")
+  }
 
-    print(compile(removeEmptyRules(css ( All.nest (prop("width") := value("100%"), All ())))._2) === """""")
+  test("Aggregate better values margins") {
+
+    val res = compile(aggregateMargins(css(All (prop("margin-top") :=  margin(1 em),
+      prop("margin-left") :=  margin(2 em),
+      prop("margin-right") :=  margin(3 em),
+      prop("margin-bottom") :=  margin(4 em))))._2)
+    assert(res === """*{margin:1em 3em 4em 2em;}""")
+
+    val res2 = compile(aggregateMargins(css(All (prop("margin-top") :=  margin(1 em),
+      prop("margin-left") :=  value("2em"),
+      prop("margin-right") :=  value("3em"),
+      prop("margin-bottom") :=  margin(4 em))))._2)
+    assert(res2 === """*{margin:1em 3em 4em 2em;}""")
 
   }
 
