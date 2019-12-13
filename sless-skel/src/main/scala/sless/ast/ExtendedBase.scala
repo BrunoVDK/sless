@@ -18,7 +18,9 @@ class ExtendedBase extends Base with CommentDSL with NestedSelectorDSL with Bett
 
   override def mergeSheets(cssSheets: Css*): Css = cssSheets.reduceLeft((x,y) => x.merge(y))
 
-  override protected def extendI(s: Selector, selector: Selector): Selector = s.addExtension(selector, s)
+  override protected def extendI(s: Selector, selector: Selector): Selector =
+    // s.addExtension(selector, s) // this made more sense to me but the noob comment in the discussion board forced me to write the code below
+    selector.elements.foldLeft(s)((newS, exp) => newS.addExtension(SelectorExp(List(exp)), s))
 
   override def inherit: ValueExp = ValueInheritExp
   override def initial: ValueExp = ValueInitialExp
