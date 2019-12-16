@@ -49,4 +49,18 @@ class LessNestingTest extends FunSuite {
     )
   }
 
+  test("Parent & without parent") {
+    val ex = css(
+      (All ## "header").nest(
+        (Parent |+ Parent).nest(
+          (Parent |- Parent)(prop("width") := value("300px"))
+        ),
+        tipe("sub") (
+          prop("width") := value("100%")
+        )
+      )
+    )
+    assert(compile(ex) === """*#header+*#header *#header+*#header{width:300px;}*#header sub{width:100%;}""")
+  }
+
 }
