@@ -56,27 +56,21 @@ class ExtendTest extends FunSuite{
         """*#id-name1.class-name1{width:100%;}*,*#id-name1{height:95%;}type1,*#id-name1.class-name1{height:95%;}""")
   }
 
-  // Bit of commentary ; there are multiple interpretations here.
-  //  - A variable holding a selector that extends may only extend once, or every time it is used
-  //  - An extension occurring multiple times may be applied just once, or every time it is called
-  // I implemented multiple ones but kept the simplest one to avoid problems with Parent references ; no duplicates allowed
-
   test("Extension as a variable") {
     val sel = All.extend(All)
     val res = compile(css(
-      sel (),
       sel (),
       sel (),
     ))
     assert(res === "*,*{}*,*{}*,*{}")
   }
 
-  test("Duplicate extension") {
+  test("Duplicate extension but without variable") {
     val res = compile(css(
       All.extend(All) (),
       All.extend(All) (),
     ))
-    assert(res === "*,*{}*,*{}")
+    assert(res === "*,*,*,*{}*,*,*,*{}")
   }
 
   test("Extend a list") {

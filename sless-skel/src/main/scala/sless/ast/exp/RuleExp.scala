@@ -1,5 +1,7 @@
 package sless.ast.exp
 
+import sless.ast.exp.selector.SelectorExp
+
 /**
   * A rule expression represents a CSS rule having a selector and a list of elements.
   *   These elements can be either declarations or (when there's nesting) other rules.
@@ -38,10 +40,10 @@ case class RuleExp(selector: SelectorExp, elements: Seq[RuleOrDeclaration], over
 
   def merge(other: RuleExp): Seq[RuleExp] = other.selector.intersect(selector) match { // Other is 'left' rule
     case None => List(this) // Nothing changes
-    case Some((left, intersect, right)) => print(left.elements + "\n" + intersect.elements + "\n" + right.elements + "\n");List(
-      if (left.elements.nonEmpty) Some(RuleExp(left, other.declarations, other.comment)) else None,
+    case Some((left, intersect, right)) => List(
+      if (left != null) Some(RuleExp(left, other.declarations, other.comment)) else None,
       Some(RuleExp(intersect, declarations ++ other.declarations.filterNot(p => declarations.exists(_.property == p.property)))),
-      if (right.elements.nonEmpty) Some(RuleExp(right, declarations, comment)) else None
+      if (right != null) Some(RuleExp(right, declarations, comment)) else None
     ).flatten
   }
 

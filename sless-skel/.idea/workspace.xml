@@ -2,9 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3c5fb62-3b36-45c4-9a19-655571ab4f81" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../FILLME.md" beforeDir="false" afterPath="$PROJECT_DIR$/../FILLME.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Buno.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Buno.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/sless/dsl/LessNestingTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/sless/dsl/LessNestingTest.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/Base.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/Base.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/ExtendedBase.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/ExtendedBase.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/CssExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/CssExp.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/DeclarationExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/DeclarationExp.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/Measure.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/value/Measure.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/RuleExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/RuleExp.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/SelectorElementExp.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/SelectorExp.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/Unit.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/value/Unit.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/ValueExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/value/ValueExp.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/sless/dsl/CommentTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/sless/dsl/CommentTest.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/sless/dsl/ExtendTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/sless/dsl/ExtendTest.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/sless/dsl/MergeTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/sless/dsl/MergeTest.scala" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +68,7 @@
     </option>
   </component>
   <component name="RunManager" selected="ScalaTest.ScalaTests in 'scala'">
-    <configuration name="LessNestingTest.From Discussion Board" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="GeneralTest.Nesting and merge" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="sless" />
       <option name="allowRunningInParallel" value="false" />
       <option name="testKind" value="Class" />
@@ -68,27 +80,8 @@
       <option name="searchTest" value="Across module dependencies" />
       <option name="showProgressMessages" value="true" />
       <option name="testArgs" value="" />
-      <option name="testClassPath" value="sless.dsl.LessNestingTest" />
-      <option name="useSbt" value="false" />
-      <option name="useUiWithSbt" value="false" />
-      <option name="workingDirectory" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LessNestingTest.Parent &amp; without parent" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
-      <module name="sless" />
-      <option name="allowRunningInParallel" value="false" />
-      <option name="testKind" value="Class" />
-      <option name="envs">
-        <map />
-      </option>
-      <option name="javaOptions" value="" />
-      <option name="jrePath" />
-      <option name="searchTest" value="Across module dependencies" />
-      <option name="showProgressMessages" value="true" />
-      <option name="testArgs" value="" />
-      <option name="testClassPath" value="sless.dsl.LessNestingTest" />
+      <option name="testClassPath" value="sless.dsl.GeneralTest" />
+      <option name="testName" value="Nesting and merge" />
       <option name="useSbt" value="false" />
       <option name="useUiWithSbt" value="false" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
@@ -109,6 +102,27 @@
       <option name="showProgressMessages" value="true" />
       <option name="testArgs" value="" />
       <option name="testClassPath" value="sless.dsl.LessNestingTest" />
+      <option name="useSbt" value="false" />
+      <option name="useUiWithSbt" value="false" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MergeTest.Quadruple merge" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="sless" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="testKind" value="Class" />
+      <option name="envs">
+        <map />
+      </option>
+      <option name="javaOptions" value="" />
+      <option name="jrePath" />
+      <option name="searchTest" value="Across module dependencies" />
+      <option name="showProgressMessages" value="true" />
+      <option name="testArgs" value="" />
+      <option name="testClassPath" value="sless.dsl.MergeTest" />
+      <option name="testName" value="Quadruple merge" />
       <option name="useSbt" value="false" />
       <option name="useUiWithSbt" value="false" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
@@ -152,16 +166,16 @@
           <option value="sless.dsl.LessNestingTest" />
           <option value="sless.dsl.BetterValuesTest" />
           <option value="sless.dsl.LessVariableTest" />
-          <option value="sless.dsl.LessNestingTest" />
-          <option value="sless.dsl.LessVariableTest" />
-          <option value="sless.dsl.MergeTest" />
-          <option value="sless.dsl.BetterValuesTest" />
+          <option value="sless.dsl.MixinTest" />
           <option value="sless.dsl.ExtendTest" />
+          <option value="sless.dsl.LessLintTest" />
           <option value="sless.dsl.CommentTest" />
           <option value="sless.dsl.GeneralTest" />
+          <option value="sless.dsl.LessNestingTest" />
           <option value="sless.dsl.CssTest" />
-          <option value="sless.dsl.MixinTest" />
-          <option value="sless.dsl.LessLintTest" />
+          <option value="sless.dsl.MergeTest" />
+          <option value="sless.dsl.LessVariableTest" />
+          <option value="sless.dsl.BetterValuesTest" />
         </list>
       </option>
       <option name="envs">
@@ -183,10 +197,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="ScalaTest.ScalaTests in 'scala'" />
+        <item itemvalue="ScalaTest.GeneralTest.Nesting and merge" />
+        <item itemvalue="ScalaTest.MergeTest.Quadruple merge" />
         <item itemvalue="ScalaTest.ScalaTests in 'scala'" />
-        <item itemvalue="ScalaTest.LessNestingTest.From Discussion Board" />
-        <item itemvalue="ScalaTest.LessNestingTest.Test algorithm again" />
-        <item itemvalue="ScalaTest.LessNestingTest.Parent &amp; without parent" />
+        <item itemvalue="ScalaTest.ScalaTests in 'scala'" />
       </list>
     </recent_temporary>
   </component>

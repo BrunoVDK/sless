@@ -23,10 +23,7 @@ case class CssExp(rs: Seq[RuleExp]) extends Expression {
     if (idx < 0) rule +: acc else acc.patch(idx, acc(idx).merge(rule), 1)
   }))
 
-  def extend(rules: Seq[RuleExp]): Seq[RuleExp] = {
-    val extensions = rules.map(_.selector).flatMap(_.extensions).distinct
-    // val extensions = rules.map(_.selector).flatMap(_.extensions).foldLeft(List[(SelectorExp,SelectorExp)]())((l, e) => if (l.exists(_ eq e)) l else e +: l)
-    rules.map(extensions.foldLeft(_)((r, e) => RuleExp(r.selector.applyExtension(e._1, e._2), r.declarations, r.comment)))
-  }
+  def extend(rules: Seq[RuleExp]): Seq[RuleExp] =
+    rules.map(rules.foldLeft(_)((cur,rule) => RuleExp(rule.selector.extend(cur.selector), cur.declarations, cur.comment)))
 
 }

@@ -1,5 +1,7 @@
 package sless.ast.exp
 
+import sless.ast.exp.value.ValueExp
+
 /**
   * A declaration expression represents a CSS declaration with a property and a value.
   */

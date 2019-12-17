@@ -10,9 +10,9 @@ class CommentTest extends FunSuite {
     val container = tipe("div") ## "container"
 
     val ex = css(
-      (N(All.c("class-name1"), All.c("class-name2")) {
+      N(All.c("class-name1"), All.c("class-name2")) {
         prop("width") := value("100%")
-      }).comment( "something with class 1 and 2"),
+      }.comment( "something with class 1 and 2"),
       container {
         (backgroundColor := value("blue")).comment("bg is blue")
       }

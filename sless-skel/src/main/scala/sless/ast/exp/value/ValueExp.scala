@@ -1,4 +1,6 @@
-package sless.ast.exp
+package sless.ast.exp.value
+
+import sless.ast.exp.Expression
 
 /**
   * A value expression represents a CSS value. This can be a simple string or a more complex representation.
