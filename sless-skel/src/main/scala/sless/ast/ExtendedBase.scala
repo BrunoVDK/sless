@@ -15,7 +15,7 @@ class ExtendedBase extends Base with CommentDSL with NestedSelectorDSL with Bett
     declaration.copy(declaration.property, declaration.value, str)
 
   override type RuleOrDeclaration = sless.ast.exp.RuleOrDeclaration
-  override val Parent: Selector = SelectorParentExp()()
+  override val Parent: Selector = SelectorParentExp()
   override protected def bindWithNesting(s: Selector, rules: Seq[RuleOrDeclaration]): Rule = RuleExp(s, rules)
 
   override def mergeSheets(cssSheets: Css*): Css = cssSheets.reduceLeft((x,y) => x.merge(y))

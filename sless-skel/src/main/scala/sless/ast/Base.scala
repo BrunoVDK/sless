@@ -19,20 +19,20 @@ class Base extends PropertyDSL with SelectorDSL with ValueDSL with Compilable wi
 
   override protected def fromRules(rules: Seq[Rule]): Css = CssExp(rules)
 
-  override protected def className(s: Selector, string: String): Selector = SelectorModifierExp(s, "." + string)()
-  override protected def id(s: Selector, string: String): Selector = SelectorModifierExp(s, "#" + string)()
-  override protected def attribute(s: Selector, attr: String, value: Value): Selector = SelectorAttributeExp(s, attr, value)()
-  override protected def pseudoClass(s: Selector, string: String): Selector = SelectorModifierExp(s, ":" + string)()
-  override protected def pseudoElement(s: Selector, string: String): Selector = SelectorModifierExp(s, "::" + string)()
+  override protected def className(s: Selector, string: String): Selector = SelectorModifierExp(s, "." + string)
+  override protected def id(s: Selector, string: String): Selector = SelectorModifierExp(s, "#" + string)
+  override protected def attribute(s: Selector, attr: String, value: Value): Selector = SelectorAttributeExp(s, attr, value)
+  override protected def pseudoClass(s: Selector, string: String): Selector = SelectorModifierExp(s, ":" + string)
+  override protected def pseudoElement(s: Selector, string: String): Selector = SelectorModifierExp(s, "::" + string)
 
-  override protected def adjacent(s1: Selector, s2: Selector): Selector = SelectorCombinatorExp(s1, s2, "+")()
-  override protected def general(s1: Selector, s2: Selector): Selector = SelectorCombinatorExp(s1, s2, "~")()
-  override protected def child(s1: Selector, s2: Selector): Selector = SelectorCombinatorExp(s1, s2, ">")()
-  override protected def descendant(s1: Selector, s2: Selector): Selector = SelectorCombinatorExp(s1, s2, " ")()
+  override protected def adjacent(s1: Selector, s2: Selector): Selector = SelectorCombinatorExp(s1, s2, "+")
+  override protected def general(s1: Selector, s2: Selector): Selector = SelectorCombinatorExp(s1, s2, "~")
+  override protected def child(s1: Selector, s2: Selector): Selector = SelectorCombinatorExp(s1, s2, ">")
+  override protected def descendant(s1: Selector, s2: Selector): Selector = SelectorCombinatorExp(s1, s2, " ")
 
   override protected def group(selectors: Seq[Selector]): Selector = SelectorListExp(selectors)
-  override def tipe(string: String): Selector = SelectorTypeExp(string)()
-  override val All: Selector = SelectorAllExp()()
+  override def tipe(string: String): Selector = SelectorTypeExp(string)
+  override val All: Selector = SelectorAllExp()
 
   override protected def bindTo(s: Selector, declarations: Seq[Declaration]): Rule = RuleExp(s, declarations)
 
