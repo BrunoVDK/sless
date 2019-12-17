@@ -7,14 +7,15 @@ import sless.ast.exp.Expression
   */
 abstract class SelectorExp(extensions: Seq[SelectorExp] = List()) extends Expression {
 
-  def replace(el: SelectorExp, rep: SelectorExp): SelectorExp = if (el == this) rep else this
+  def replace(el: SelectorExp, rep: SelectorExp): SelectorExp = if (el == this) rep.addExtensions(extensions) else this
   def grounded: Boolean = true
   def ground(parent: SelectorExp): SelectorExp =
-    if (!grounded) extensions.foldLeft(replace(SelectorParentExp()(), parent))((cur,e) => cur.addExtension(e.ground(parent)))
-    else SelectorCombinatorExp(parent, this, " ")(extensions)
+    if (!grounded) replace(SelectorParentExp(), parent)
+    else SelectorCombinatorExp(parent, this, " ")
 
   def addExtension(toExtend: SelectorExp): SelectorExp
   def addExtensions(extensions: Seq[SelectorExp]) : SelectorExp = extensions.foldLeft(this)((cur,sel) => cur.addExtension(sel))
+  def extensionPairs: Seq[(SelectorExp, SelectorExp)] = extensions.map((this,_))
   def extend(toExtend: SelectorExp): SelectorExp = toExtend match {
     case l: SelectorListExp => SelectorListExp(l.selectors.flatMap(s => if (extensions.contains(s)) List(s,this) else List(s)))
     case _: SelectorExp => if (extensions.contains(toExtend)) SelectorListExp(List(toExtend, this)) else toExtend

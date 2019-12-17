@@ -10,6 +10,8 @@ case class SelectorModifierExp(s: SelectorExp, suffix: String)(implicit extensio
   override def replace(el: SelectorExp, rep: SelectorExp): SelectorExp =
     if (this == el) rep else copy(s.replace(el,rep), suffix)
   override def addExtension(toExtend: SelectorExp): SelectorExp = SelectorModifierExp(s, suffix)(toExtend +: extensions)
+  override def extensionPairs: Seq[(SelectorExp, SelectorExp)] = extensions.map((this,_)) ++ s.extensionPairs
+  override def extend(toExtend: SelectorExp): SelectorExp = super.extend(s.extend(toExtend))
 }
 
 case class SelectorAttributeExp(s: SelectorExp, attr: String, v: ValueExp)(implicit extensions: Seq[SelectorExp] = List())
@@ -20,4 +22,6 @@ case class SelectorAttributeExp(s: SelectorExp, attr: String, v: ValueExp)(impli
   override def replace(el: SelectorExp, rep: SelectorExp): SelectorExp =
     if (this == el) rep else copy(s.replace(el,rep), attr, v)
   override def addExtension(toExtend: SelectorExp): SelectorExp = SelectorAttributeExp(s, attr, v)(toExtend +: extensions)
+  override def extensionPairs: Seq[(SelectorExp, SelectorExp)] = extensions.map((this,_)) ++ s.extensionPairs
+  override def extend(toExtend: SelectorExp): SelectorExp = super.extend(s.extend(toExtend))
 }

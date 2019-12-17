@@ -14,6 +14,7 @@ case class SelectorListExp(ss: Seq[SelectorExp]) extends SelectorExp {
   override def grounded: Boolean = selectors.forall(_.grounded)
 
   override def addExtension(toExtend: SelectorExp): SelectorExp = SelectorListExp(selectors.map(_.addExtension(toExtend)))
+  override def extensionPairs: Seq[(SelectorExp, SelectorExp)] = selectors.flatMap(_.extensionPairs)
   override def extend(toExtend: SelectorExp): SelectorExp = selectors.foldRight(toExtend)((selector,cur) => selector.extend(cur))
 
   override def intersect(other: SelectorExp): Option[(SelectorExp, SelectorExp, SelectorExp)] = other match {

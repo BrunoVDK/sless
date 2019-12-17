@@ -87,4 +87,13 @@ class LessNestingTest extends FunSuite {
     assert(compile(ex) === """*#header{color:black;background-color:green;}*#header *.logo{width:300px;}""")
   }
 
+  test("Nesting with variable referring to parent") {
+    val sel = Parent ## "header"
+    val ex = css(
+      All.nest(sel ( prop("color") := value("blue"))),
+      tipe("Test").nest(sel ( prop("color") := value("blue")))
+    )
+    assert(compile(ex) === """*#header{color:blue;}Test#header{color:blue;}""")
+  }
+
 }

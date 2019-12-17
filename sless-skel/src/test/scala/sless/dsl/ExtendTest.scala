@@ -62,7 +62,7 @@ class ExtendTest extends FunSuite{
       sel (),
       sel (),
     ))
-    assert(res === "*,*{}*,*{}*,*{}")
+    assert(res === "*,*{}*,*{}")
   }
 
   test("Duplicate extension but without variable") {
@@ -70,7 +70,7 @@ class ExtendTest extends FunSuite{
       All.extend(All) (),
       All.extend(All) (),
     ))
-    assert(res === "*,*,*,*{}*,*,*,*{}")
+    assert(res === "*,*{}*,*{}")
   }
 
   test("Extend a list") {
