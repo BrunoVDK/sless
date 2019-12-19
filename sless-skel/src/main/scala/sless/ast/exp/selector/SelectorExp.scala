@@ -7,23 +7,30 @@ import sless.ast.exp.Expression
   */
 abstract class SelectorExp(extensions: Seq[SelectorExp] = List()) extends Expression {
 
-  def replace(el: SelectorExp, rep: SelectorExp): SelectorExp = if (el == this) rep.addExtensions(extensions) else this
+  def replace(el: SelectorExp, rep: SelectorExp): SelectorExp =
+    if (el == this) rep.addExtensions(extensions.map(_.replace(el, rep)))
+    else this.withExtensions(extensions.map(_.replace(el, rep)))
+
   def grounded: Boolean = true
   def ground(parent: SelectorExp): SelectorExp =
     if (!grounded) replace(SelectorParentExp(), parent)
     else SelectorCombinatorExp(parent, this, " ")
 
-  def addExtension(toExtend: SelectorExp): SelectorExp
-  def addExtensions(extensions: Seq[SelectorExp]) : SelectorExp = extensions.foldLeft(this)((cur,sel) => cur.addExtension(sel))
+  def withExtensions(extensions: Seq[SelectorExp]): SelectorExp
+  def addExtension(toExtend: SelectorExp): SelectorExp = withExtensions(toExtend +: extensions)
+  def addExtensions(toExtend: Seq[SelectorExp]): SelectorExp = withExtensions(toExtend ++ extensions)
+
   def extensionPairs: Seq[(SelectorExp, SelectorExp)] = extensions.map((this,_))
-  def extend(toExtend: SelectorExp): SelectorExp = toExtend match {
-    case l: SelectorListExp => SelectorListExp(l.selectors.flatMap(s => if (extensions.contains(s)) List(s,this) else List(s)))
-    case _: SelectorExp => if (extensions.contains(toExtend)) SelectorListExp(List(toExtend, this)) else toExtend
-  }
+  def extend(part: SelectorExp, ext: SelectorExp): SelectorExp = if (part == this) SelectorListExp(List(part, ext)) else this
 
   def intersect(other: SelectorExp): Option[(SelectorExp, SelectorExp, SelectorExp)] = other match {
-    case l: SelectorListExp => if (l.selectors.contains(this)) Some((null, this, SelectorListExp(l.selectors.filterNot(_ == this)))) else None
-    case _: SelectorExp => if (this == other) Some((null, this, null)) else None
+    case l: SelectorListExp =>
+      if (l.selectors.contains(this)) Some(null, this, {
+        val rem = l.selectors.filterNot(_ == this)
+        if (rem.isEmpty) null else if(rem.size == 1) rem.head else SelectorListExp(rem)
+      })
+      else None
+    case _: SelectorExp => if (this == other) Some(null, this, null) else None
   }
 
 }

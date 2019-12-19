@@ -38,12 +38,12 @@ case class RuleExp(selector: SelectorExp, elements: Seq[RuleOrDeclaration], over
     if (!isEmpty || rules.isEmpty) RuleExp(selector, declarations, comment) +: rules.flatMap(_.flatten())
     else rules.flatMap(_.flatten())
 
-  def merge(other: RuleExp): Seq[RuleExp] = other.selector.intersect(selector) match { // Other is 'left' rule
-    case None => List(this) // Nothing changes
+  def merge(other: RuleExp): Seq[RuleExp] = other.selector.intersect(selector) match {
+    case None => List(other, this)
     case Some((left, intersect, right)) => List(
-      if (left != null) Some(RuleExp(left, other.declarations, other.comment)) else None,
-      Some(RuleExp(intersect, declarations ++ other.declarations.filterNot(p => declarations.exists(_.property == p.property)))),
-      if (right != null) Some(RuleExp(right, declarations, comment)) else None
+      if (left != null) Some(RuleExp(left.withExtensions(List()), other.declarations, other.comment)) else None,
+      Some(RuleExp(intersect.withExtensions(List()), declarations ++ other.declarations.filterNot(p => declarations.exists(_.property == p.property)))),
+      if (right != null) Some(RuleExp(right.withExtensions(List()), declarations, comment)) else None
     ).flatten
   }
 

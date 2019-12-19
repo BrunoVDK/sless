@@ -3,6 +3,7 @@ package sless.ast
 import sless.dsl._
 import sless.ast.exp._
 import sless.ast.exp.selector._
+import sless.ast.exp.selector.modifier._
 import sless.ast.exp.value._
 
 /**
@@ -19,11 +20,11 @@ class Base extends PropertyDSL with SelectorDSL with ValueDSL with Compilable wi
 
   override protected def fromRules(rules: Seq[Rule]): Css = CssExp(rules)
 
-  override protected def className(s: Selector, string: String): Selector = SelectorModifierExp(s, "." + string)
-  override protected def id(s: Selector, string: String): Selector = SelectorModifierExp(s, "#" + string)
-  override protected def attribute(s: Selector, attr: String, value: Value): Selector = SelectorAttributeExp(s, attr, value)
-  override protected def pseudoClass(s: Selector, string: String): Selector = SelectorModifierExp(s, ":" + string)
-  override protected def pseudoElement(s: Selector, string: String): Selector = SelectorModifierExp(s, "::" + string)
+  override protected def className(s: Selector, string: String): Selector = SelectorModifierClassExp(s, string)
+  override protected def id(s: Selector, string: String): Selector = SelectorModifierIDExp(s, string)
+  override protected def attribute(s: Selector, attr: String, value: Value): Selector = SelectorModifierAttributeExp(s, attr, value)
+  override protected def pseudoClass(s: Selector, string: String): Selector = SelectorModifierPseudoClassExp(s, string)
+  override protected def pseudoElement(s: Selector, string: String): Selector = SelectorModifierPseudoElementExp(s, string)
 
   override protected def adjacent(s1: Selector, s2: Selector): Selector = SelectorCombinatorExp(s1, s2, "+")
   override protected def general(s1: Selector, s2: Selector): Selector = SelectorCombinatorExp(s1, s2, "~")

@@ -9,6 +9,17 @@ class GeneralTest extends FunSuite {
     val sel = All.c("class1")
     val res = compile(css(
       All.nest (
+        (Parent |+ Parent).extend(sel) ()
+      ),
+      sel ()
+    ))
+    assert(res == "*+*{}*.class1,*+*{}")
+  }
+
+  test("Extending with parent (v2)") {
+    val sel = All.c("class1")
+    val res = compile(css(
+      All.nest (
         Parent.extend(sel) ()
       ),
       sel ()
@@ -34,8 +45,8 @@ class GeneralTest extends FunSuite {
     val res = compile(css(
       All.nest (
         (Parent |+ Parent).extend(sel).nest (
-          Parent ()
-        )
+          Parent (),
+        ),
       ),
       sel ()
     ))
@@ -54,7 +65,7 @@ class GeneralTest extends FunSuite {
       ),
       sel ()
     ))
-    assert(res == "*.class1,*+*+*+*,*+*{}*+*+*+*{}*.class1,*+*+*+*,*+*{}")
+    assert(res == "*.class1,*+*,*+*+*+*{}*+*+*+*{}*.class1,*+*,*+*+*+*{}")
   }
 
   test("Nesting and merge") {
@@ -80,25 +91,38 @@ class GeneralTest extends FunSuite {
   }
 
   test("Extending and merge") {
-
+    // Extensions are applied before merging
+    // I also wrote an implementation where it is done *before* merging so it's really just a choice
     val ex1 = css(
       N(All.c("class-name1"), All.c("class-name2")).nest {
-        N(Parent, All.c("class-name3").extend(Parent)) (
-          prop("width") := value("100%")
+        N(Parent, All.c("class-name3").extend(N(All.c("class-name1"), All.c("class-name2")))) (
+          prop("width") := value("100%"),
+          prop("display") := value("block")
         )
       }
     )
-
     val ex2 = css(
       All.c("class-name1") (
         prop("background-color") := value("blue"),
         prop("width") := value("95%")
       )
     )
-
     val ex = mergeSheets(ex1,ex2)
-    assert(compile(ex) === """*.class-name2,*.class-name3,*.class-name3{width:100%;}*.class-name1{background-color:blue;width:95%;}""")
+    assert(compile(ex) === """*.class-name3,*.class-name2,*.class-name3,*.class-name3{width:100%;display:block;}*.class-name1{background-color:blue;width:95%;display:block;}""")
+  }
 
+  test("Extending and merge (3 sheets)") {
+    // Extensions will only be applied before merging
+    val sel = All.c("some-class")
+    val dummy = prop("width") := value("100%")
+    val dummy2 = prop("height") := value("100%")
+    val dummy3 = prop("display") := value("block")
+    val ex1 = css(All.extend(sel) (dummy3), sel (dummy))
+    val ex2 = css(sel (dummy))
+    val ex3 = css(sel (dummy))
+    val ex4 = css(sel (dummy2))
+    val ex = mergeSheets(ex1, ex2,  ex3, ex4)
+    assert(compile(ex) === """*{width:100%;display:block;}*.some-class{height:100%;width:100%;}""")
   }
 
   test("Comments within nested rules") {
@@ -150,7 +174,7 @@ class GeneralTest extends FunSuite {
 
     val ex2 = css(
       (All ## "container").nest (
-        N(All, (Parent |+ Parent)) (
+        N(All, Parent |+ Parent) (
           (prop("width") := value("100%")).comment("this comment is here to stay"),
         ).comment("hello"),
         prop("display") := value("block")
@@ -181,6 +205,29 @@ class GeneralTest extends FunSuite {
       prop("margin-bottom") :=  margin(4 em))))._2)
     assert(res2 === """*{margin:1em 3em 4em 2em;}""")
 
+  }
+
+  test("Extending throughout a nesting") {
+    val ex = css(All.extend(All |+ All).nest (
+      Parent.nest (
+        Parent.nest (
+          (Parent |+ Parent) (
+            prop("width") := value("100%")
+          )
+        )
+      )
+    ))
+    val ex2 = css(All.extend(All |+ All).nest (
+      Parent.nest (
+        (Parent |+ Parent).nest (
+          N(Parent,Parent) (
+            prop("width") := value("100%")
+          )
+        )
+      )
+    ))
+    assert(compile(ex) === """*+*,*{width:100%;}""")
+    assert(compile(ex2) === """*+*,*,*+*,*{width:100%;}""")
   }
 
 }
