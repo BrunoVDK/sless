@@ -32,14 +32,20 @@ class MixinTest extends FunSuite {
   }
 
   test("Mixing map") {
-    val sizes: Map[String, Int => Seq[Declaration]] = Map(
-      "s1" -> (x => List(prop("width") := value(x.toString + "px"), prop("height") := value(x.toString + "px"))),
-      "s2" -> (x => List(prop("width") := value((2*x).toString + "px"), prop("width") := value((2*x).toString + "px")))
+    val sizes: Map[String, Int => Value] = Map(
+      "mobile" -> (x => value(x.toString + "px")),
+      "desktop" -> (x => value((2*x).toString + "px"))
     )
-    val ex1 = css(All.mixin(sizes("s1")(100)))
-    val ex2 = css(All.mixin(sizes("s2")(100)))
-    assert(compile(ex1) === """*{width:100px;height:100px;}""")
-    assert(compile(ex2) === """*{width:200px;width:200px;}""")
+    val ex1 = css(All (prop("width") := sizes("mobile")(100)))
+    val ex2 = css(All (prop("width") := sizes("desktop")(100)))
+    assert(compile(ex1) === """*{width:100px;}""")
+    assert(compile(ex2) === """*{width:200px;}""")
+  }
+
+  test("Namespaces (my library example from lesscss.org)") {
+    val library = Map("my-mixin" -> (prop("color") := value("black")))
+    val ex = css(tipe("").c("class") (library("my-mixin")))
+    assert(compile(ex) === """.class{color:black;}""")
   }
 
 }
