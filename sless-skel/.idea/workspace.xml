@@ -4,7 +4,8 @@
     <list default="true" id="d3c5fb62-3b36-45c4-9a19-655571ab4f81" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../FILLME.md" beforeDir="false" afterPath="$PROJECT_DIR$/../FILLME.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/sless/dsl/MixinTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/sless/dsl/MixinTest.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/SelectorCombinatorExp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/sless/ast/exp/selector/SelectorCombinatorExp.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/sless/dsl/BetterValuesTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/sless/dsl/BetterValuesTest.scala" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,8 +56,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="ScalaTest.ScalaTests in 'scala'">
-    <configuration name="GeneralTest.Extending and merge (3 sheets)" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+  <component name="RunManager" selected="ScalaTest.BetterValuesTest.ok">
+    <configuration name="BetterValuesTest.ok" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="sless" />
       <option name="allowRunningInParallel" value="false" />
       <option name="testKind" value="Class" />
@@ -68,7 +69,7 @@
       <option name="searchTest" value="Across module dependencies" />
       <option name="showProgressMessages" value="true" />
       <option name="testArgs" value="" />
-      <option name="testClassPath" value="sless.dsl.GeneralTest" />
+      <option name="testClassPath" value="sless.dsl.BetterValuesTest" />
       <option name="useSbt" value="false" />
       <option name="useUiWithSbt" value="false" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
@@ -140,30 +141,6 @@
       <module name="sless" />
       <option name="allowRunningInParallel" value="false" />
       <option name="testKind" value="Class" />
-      <option name="classBuf">
-        <list>
-          <option value="sless.dsl.CssTest" />
-          <option value="sless.dsl.MergeTest" />
-          <option value="sless.dsl.MixinTest" />
-          <option value="sless.dsl.ExtendTest" />
-          <option value="sless.dsl.CommentTest" />
-          <option value="sless.dsl.GeneralTest" />
-          <option value="sless.dsl.LessLintTest" />
-          <option value="sless.dsl.LessNestingTest" />
-          <option value="sless.dsl.BetterValuesTest" />
-          <option value="sless.dsl.LessVariableTest" />
-          <option value="sless.dsl.GeneralTest" />
-          <option value="sless.dsl.CommentTest" />
-          <option value="sless.dsl.BetterValuesTest" />
-          <option value="sless.dsl.MixinTest" />
-          <option value="sless.dsl.LessLintTest" />
-          <option value="sless.dsl.MergeTest" />
-          <option value="sless.dsl.ExtendTest" />
-          <option value="sless.dsl.LessVariableTest" />
-          <option value="sless.dsl.CssTest" />
-          <option value="sless.dsl.LessNestingTest" />
-        </list>
-      </option>
       <option name="envs">
         <map />
       </option>
@@ -172,7 +149,7 @@
       <option name="searchTest" value="Across module dependencies" />
       <option name="showProgressMessages" value="true" />
       <option name="testArgs" value="" />
-      <option name="testPackagePath" value="" />
+      <option name="testClassPath" value="" />
       <option name="useSbt" value="false" />
       <option name="useUiWithSbt" value="false" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
@@ -182,11 +159,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="ScalaTest.BetterValuesTest.ok" />
         <item itemvalue="ScalaTest.ScalaTests in 'scala'" />
         <item itemvalue="ScalaTest.ScalaTests in 'scala'" />
-        <item itemvalue="ScalaTest.GeneralTest.Extending and merge (3 sheets)" />
         <item itemvalue="ScalaTest.ScalaTests in 'scala'" />
-        <item itemvalue="ScalaTest.GeneralTest.Extending throughout a nesting" />
+        <item itemvalue="ScalaTest.ScalaTests in 'scala'" />
       </list>
     </recent_temporary>
   </component>

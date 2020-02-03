@@ -11,7 +11,6 @@ case class SelectorCombinatorExp(s1: SelectorExp, s2: SelectorExp, sep: String)(
     if (this == el) super.replace(el,rep) else copy(s1.replace(el,rep), s2.replace(el,rep))(extensions)
 
   override def withExtensions(extensions: Seq[SelectorExp]): SelectorExp = copy()(extensions)
-  override def addExtension(toExtend: SelectorExp): SelectorExp = copy()(toExtend +: extensions)
   override def extensionPairs: Seq[(SelectorExp, SelectorExp)] = extensions.map((this,_)) ++ s1.extensionPairs ++ s2.extensionPairs
 
 }

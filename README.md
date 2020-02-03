@@ -1,2 +1,1 @@
-# sless
-Less CSS with Scala.
+A DSL written in Scala which can compile to `CSS` code. Available features are mostly based on `less.js`.
